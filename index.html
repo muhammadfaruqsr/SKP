@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SKP Harian</title>
+<meta name="theme-color" content="#0f766e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SKP Harian">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#f2f6f5;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f1f1c}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#f2f6f5;padding-top:env(safe-area-inset-top)}
+#load{position:fixed;inset:0;display:grid;place-items:center;text-align:center;background:#f2f6f5;padding:24px;z-index:2}
+#load img{width:84px;height:84px;border-radius:20px;box-shadow:0 8px 24px rgba(15,118,110,.25);margin-bottom:16px}
+.spin{width:30px;height:30px;border:3px solid rgba(15,118,110,.2);border-top-color:#0f766e;border-radius:50%;animation:s .8s linear infinite;margin:0 auto 14px}
+@keyframes s{to{transform:rotate(360deg)}}
+.btn{display:inline-block;background:#0f766e;color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:12px;margin:6px}
+.btn.g{background:#e2ecea;color:#0f1f1c}
+p{color:#5d6f6b;font-size:14px;max-width:340px;margin:8px auto}
+#fallback{display:none}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div>
+    <img src="icon-192.png" alt="">
+    <div class="spin" id="spin"></div>
+    <div id="msg">Membuka SKP Harian…</div>
+    <div id="fallback">
+      <p>Aplikasi belum tampil. Biasanya karena belum login Google di browser ini, atau URL belum diisi.</p>
+      <a class="btn" id="direct" target="_top" rel="noopener">Buka langsung</a>
+      <a class="btn g" href="javascript:location.reload()">Coba lagi</a>
+    </div>
+  </div>
+</div>
+
+<iframe id="app" title="SKP Harian" allow="clipboard-write; camera; fullscreen"></iframe>
+
+<script>
+// ====== ISI DENGAN URL WEB APP APPS SCRIPT ANDA (yang berakhiran /exec) ======
+const APP_URL = 'PASTE_URL_EXEC_DI_SINI';
+// ==============================================================================
+
+const ok = /^https:\/\/script\.google\.com\/.+\/exec/.test(APP_URL);
+const $ = s => document.querySelector(s);
+
+function showFallback(text){
+  $('#spin').style.display = 'none';
+  if (text) $('#msg').textContent = text;
+  $('#fallback').style.display = 'block';
+  if (ok) $('#direct').href = APP_URL;
+}
+
+if (!ok) {
+  showFallback('URL web app belum diisi. Buka index.html lalu isi APP_URL.');
+  $('#direct').style.display = 'none';
+} else {
+  $('#app').src = APP_URL;
+  window.addEventListener('message', e => {
+    if (e.data && e.data.skp === 'ready') $('#load').style.display = 'none';
+  });
+  setTimeout(() => { if ($('#load').style.display !== 'none') showFallback(); }, 15000);
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
