@@ -340,7 +340,7 @@ textarea{resize:none;overflow:hidden;min-height:76px}
    google.script.run digantikan permintaan POST anonim ke URL web app /exec. */
 (function(){
   if(typeof google!=='undefined'&&google.script&&google.script.run)return;
-  const API_URL='PASTE_URL_EXEC_DI_SINI';
+  const API_URL='https://script.google.com/macros/s/AKfycbwxlhxnNrbG0B4nXhUlhM05j8JcedgwMDN2qrSIJpzPeMHoCVcqBM_XTnoptG-feeIA9A/exec';
   const call=(fn,args)=>{
     if(!/^https:\/\/script\.google\.com\/.+\/exec/.test(API_URL))return Promise.reject(new Error('API_URL di index.html belum diisi dengan URL /exec.'));
     return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:fn,args:args}),redirect:'follow',credentials:'omit'})
