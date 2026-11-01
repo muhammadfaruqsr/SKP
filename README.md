@@ -1,11 +1,13 @@
-# SKP Harian — paket PWA
+# SKP Harian — paket PWA (mode mandiri)
 
-Folder ini dipasang di hosting statis (HTTPS) dan membungkus web app Apps Script
-sehingga bisa diinstal dari Chrome HP.
+Aplikasi tampil langsung dari hosting ini (bukan di dalam bingkai Apps Script), lalu mengambil data lewat
+permintaan anonim ke URL web app Apps Script. Karena itu bisa dibuka dengan akun Google apa pun
+(atau tanpa login) dan datanya tetap di Drive akun pemilik.
 
-1. Buka `index.html`, ganti `PASTE_URL_EXEC_DI_SINI` dengan URL web app Anda (berakhiran `/exec`).
-2. Upload SEMUA isi folder ini ke hosting statis, misalnya GitHub Pages, Netlify, atau Cloudflare Pages.
-3. Di HP, buka alamat hosting di Chrome → menu ⋮ → **Instal aplikasi** (atau **Tambahkan ke layar utama**).
+1. Buka `index.html`, cari `PASTE_URL_EXEC_DI_SINI` (hanya ada satu), ganti dengan URL web app Anda (berakhiran `/exec`).
+2. Upload SEMUA file di folder ini ke repositori GitHub (Add file → Create new file untuk .webmanifest dan sw.js bila upload gagal).
+3. Settings → Pages → Deploy from a branch → main / root.
+4. Buka alamat GitHub Pages di Chrome HP → ⋮ → Instal aplikasi.
 
-Jika aplikasi tampil kosong atau meminta login di dalam bingkai, pakai tombol "Buka langsung"
-dan pastikan Anda sudah login Google di Chrome yang sama.
+Syarat di Apps Script: deployment "Jalankan sebagai: Saya" dan "Yang memiliki akses: Siapa saja",
+kode `Code.gs` terbaru (ada fungsi `doPost`), lalu Deploy → Versi baru.
