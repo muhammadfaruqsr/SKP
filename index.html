@@ -175,11 +175,11 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 </head>
 <body>
 
-<div id="boot"><div><div class="spin"></div><div id="boot-t">Bentar gaes lagi disiapin</div></div></div>
+<div id="boot"><div><div class="spin"></div><div id="boot-t">Menyiapkan aplikasi…</div></div></div>
 
 <header class="top"><div class="wrap">
   <div class="brand-ic" data-ic="file"></div>
-  <div><h1>Generator SKP Harian</h1><p>Bisa buat Laporan SKP otomatis, upload gdrive otomatis, dan membuat link otomatis</p></div>
+  <div><h1>SKP Harian</h1><p>Isi laporan → PDF → tersimpan otomatis di Google Drive</p></div>
 </div></header>
 
 <nav id="nav">
@@ -516,6 +516,7 @@ $('#r-url').onclick=e=>e.target.select();
 const HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jum’at','Sabtu'];
 const BULAN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 const tglIndo=s=>{const [y,m,d]=s.split('-').map(Number);return d+' '+BULAN[m-1]+' '+y;};
+const sudahAdaTgl=(w,t)=>{w=String(w||'').toLowerCase();const [y,m,d]=t.split('-').map(Number),p=n=>(n<10?'0':'')+n;return (w.includes(BULAN[m-1].toLowerCase())&&w.includes(String(y)))||[p(d)+'/'+p(m)+'/'+y,d+'/'+m+'/'+y,t,p(d)+'-'+p(m)+'-'+y].some(x=>w.includes(x));};
 const hariTgl=s=>{const [y,m,d]=s.split('-').map(Number);return HARI[new Date(y,m-1,d).getDay()]+', '+tglIndo(s);};
 const pre=t=>esc(t).replace(/\r?\n/g,'<br>');
 function sigHtml(d){
@@ -526,7 +527,7 @@ function previewHtml(d){
   const p=S.profil;
   const prof=[['Nama',p.nama],['NIP',p.nip],['Pangkat/Gol. Ruang',p.pangkat],['Jabatan',p.jabatan],['Unit Kerja',p.unit],['Atasan',p.atasan]];
   const inner=prof.map(r=>`<tr><td style="width:105px">${esc(r[0])}</td><td style="width:12px">:</td><td>${pre(r[1])}</td></tr>`).join('');
-  let waktu=d.waktu;if(d.autoTanggal)waktu+='\n'+hariTgl(d.tanggal);
+  let waktu=d.waktu;if(d.autoTanggal&&!sudahAdaTgl(waktu,d.tanggal))waktu+='\n'+hariTgl(d.tanggal);
   const rows=[['Jenis RHK',d.rhk],['Waktu Pelaksanaan',waktu],['Jenis Kegiatan',d.kegiatan],['Output yang di hasilkan',d.output]]
     .map((r,i)=>`<tr><td style="width:120px">${esc(r[0])}</td><td style="width:14px">:</td><td>${i===0&&d.rhkLabel?`<b>${esc(d.rhkLabel)}:</b> `:''}${pre(r[1])}</td></tr>`).join('');
   let html=`<div class="pg"><table><tr><td class="lg" style="width:120px">${p.logoPreview?`<img src="${p.logoPreview}">`:''}</td><td class="nb"><table>${inner}</table></td></tr></table><div style="height:14px"></div><table>${rows}</table>`;
