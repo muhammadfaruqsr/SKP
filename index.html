@@ -244,7 +244,8 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 <!-- ================= JADWAL ABSEN ================= -->
 <section class="tab" id="tab-absen">
   <div class="card">
-    <h2 style="margin-bottom:12px">Jadwal Absen</h2>
+    <div class="seg" id="jd-seg"><button data-k="absen" class="on">Jadwal Absen</button><button data-k="masuk">Jadwal Masuk</button></div>
+    <h2 style="margin-bottom:12px" id="ab-h">Jadwal Absen</h2>
     <div class="calh">
       <button class="ib" id="ab-prev" aria-label="Bulan sebelumnya"><i data-ic="chl"></i></button>
       <div class="calt"><b id="ab-title">–</b><small id="ab-sub"></small></div>
@@ -264,23 +265,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
     <button class="btn ghost block" id="ab-del">Kosongkan tanggal ini</button>
   </div>
 
-  <div class="card">
-    <h2>Isi rentang tanggal</h2>
-    <p class="sub">Isi banyak hari sekaligus dengan satu jadwal (maks 62 hari).</p>
-    <div class="grid">
-      <div class="field"><label for="ab-from">Dari</label><input type="date" id="ab-from"></div>
-      <div class="field"><label for="ab-to">Sampai</label><input type="date" id="ab-to"></div>
-    </div>
-    <div class="field"><label for="ab-rs">Jadwal</label><select id="ab-rs" style="margin-bottom:0;color:var(--ink)"></select></div>
-    <button class="btn ghost block" id="ab-rgo" style="margin-top:12px"><i data-ic="check"></i><span>Terapkan ke rentang</span></button>
-  </div>
-
-  <div class="card">
-    <h2>Rekap bulan ini</h2>
-    <p class="sub">Ketuk salah satu baris untuk memilih tanggalnya.</p>
-    <div class="recap" id="ab-recap"></div>
-    <div id="ab-list"></div>
-  </div>
 </section>
 
 <!-- ================= SETTING ================= -->
@@ -516,7 +500,12 @@ $('#r-url').onclick=e=>e.target.select();
 const HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jum’at','Sabtu'];
 const BULAN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 const tglIndo=s=>{const [y,m,d]=s.split('-').map(Number);return d+' '+BULAN[m-1]+' '+y;};
-const sudahAdaTgl=(w,t)=>{w=String(w||'').toLowerCase();const [y,m,d]=t.split('-').map(Number),p=n=>(n<10?'0':'')+n;return (w.includes(BULAN[m-1].toLowerCase())&&w.includes(String(y)))||[p(d)+'/'+p(m)+'/'+y,d+'/'+m+'/'+y,t,p(d)+'-'+p(m)+'-'+y].some(x=>w.includes(x));};
+const bersihTanggal=w=>{
+  const H="(?:senin|selasa|rabu|kamis|jum['\u2019`]?at|sabtu|minggu|ahad)",M='(?:januari|februari|maret|april|mei|juni|juli|agustus|september|oktober|november|desember|jan|feb|mar|apr|jun|jul|agu|agt|sep|okt|nov|des)[a-z]*\\.?',pre='(?:\\b'+H+'\\s*[,.]?\\s*)?';
+  let s=String(w||'');
+  [pre+'\\b\\d{1,2}\\s+'+M+'(?:\\s+\\d{4})?',pre+'\\b\\d{1,2}[\\/-]\\d{1,2}[\\/-]\\d{4}\\b',pre+'\\b\\d{1,2}\\/\\d{1,2}\\/\\d{2}\\b',pre+'\\b\\d{4}-\\d{2}-\\d{2}\\b'].forEach(p=>{s=s.replace(new RegExp(p,'gi'),'');});
+  return s.split(/\r?\n/).map(l=>l.replace(/\(\s*\)/g,'').replace(/[\s,;:\-\u2013]+$/,'').replace(/^[\s,;:]+/,'').trim()).filter(Boolean).join('\n');
+};
 const hariTgl=s=>{const [y,m,d]=s.split('-').map(Number);return HARI[new Date(y,m-1,d).getDay()]+', '+tglIndo(s);};
 const pre=t=>esc(t).replace(/\r?\n/g,'<br>');
 function sigHtml(d){
@@ -527,7 +516,7 @@ function previewHtml(d){
   const p=S.profil;
   const prof=[['Nama',p.nama],['NIP',p.nip],['Pangkat/Gol. Ruang',p.pangkat],['Jabatan',p.jabatan],['Unit Kerja',p.unit],['Atasan',p.atasan]];
   const inner=prof.map(r=>`<tr><td style="width:105px">${esc(r[0])}</td><td style="width:12px">:</td><td>${pre(r[1])}</td></tr>`).join('');
-  let waktu=d.waktu;if(d.autoTanggal&&!sudahAdaTgl(waktu,d.tanggal))waktu+='\n'+hariTgl(d.tanggal);
+  let waktu=d.waktu;if(d.autoTanggal){waktu=bersihTanggal(waktu);waktu=(waktu?waktu+'\n':'')+hariTgl(d.tanggal);}
   const rows=[['Jenis RHK',d.rhk],['Waktu Pelaksanaan',waktu],['Jenis Kegiatan',d.kegiatan],['Output yang di hasilkan',d.output]]
     .map((r,i)=>`<tr><td style="width:120px">${esc(r[0])}</td><td style="width:14px">:</td><td>${i===0&&d.rhkLabel?`<b>${esc(d.rhkLabel)}:</b> `:''}${pre(r[1])}</td></tr>`).join('');
   let html=`<div class="pg"><table><tr><td class="lg" style="width:120px">${p.logoPreview?`<img src="${p.logoPreview}">`:''}</td><td class="nb"><table>${inner}</table></td></tr></table><div style="height:14px"></div><table>${rows}</table>`;
@@ -674,7 +663,9 @@ const SHIFT={
 const SKEYS=['1','2','3','P','L'];
 const BLN_FULL=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 const HARI3=['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
-const AB={ym:'',data:{},loaded:{},sel:'',busy:false};
+const JD={absen:{kind:'absen',ym:'',data:{},loaded:{},sel:'',busy:false},masuk:{kind:'masuk',ym:'',data:{},loaded:{},sel:'',busy:false}};
+const JNAMA={absen:'Jadwal Absen',masuk:'Jadwal Masuk'};
+let AB=JD.absen;
 const p2=n=>String(n).padStart(2,'0');
 const sBadge=k=>SHIFT[k]?`<span class="bd c${k}">${SHIFT[k].b}</span>`:'';
 const ymdOf=d=>d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());
@@ -682,19 +673,18 @@ function absInit(){
   if(AB.ym)return;
   const t=todayStr();
   AB.ym=t.slice(0,7);AB.sel=t;
-  $('#ab-from').value=t;$('#ab-to').value=t;
-  $('#ab-rs').innerHTML=SKEYS.map(k=>`<option value="${k}">${SHIFT[k].n}${SHIFT[k].j?' ('+SHIFT[k].j+')':''}</option>`).join('');
 }
 async function loadAbsen(ym,force){
-  if(AB.loaded[ym]&&!force){renderAbsen();return;}
+  const st=AB;
+  if(st.loaded[ym]&&!force){renderAbsen();return;}
   renderAbsen();
   try{
-    const list=JSON.parse(await api('getAbsen',ym)||'[]');
-    Object.keys(AB.data).forEach(k=>{if(k.indexOf(ym)===0)delete AB.data[k];});
-    list.forEach(x=>{if(SHIFT[x.shift])AB.data[x.tanggal]={tanggal:x.tanggal,shift:x.shift};});
-    AB.loaded[ym]=true;
+    const list=JSON.parse(await api('getAbsen',ym,st.kind)||'[]');
+    Object.keys(st.data).forEach(k=>{if(k.indexOf(ym)===0)delete st.data[k];});
+    list.forEach(x=>{if(SHIFT[x.shift])st.data[x.tanggal]={tanggal:x.tanggal,shift:x.shift};});
+    st.loaded[ym]=true;
   }catch(e){toast('Gagal memuat jadwal: '+e.message);}
-  renderAbsen();
+  if(st===AB)renderAbsen();
 }
 function renderAbsen(){
   absInit();
@@ -713,14 +703,7 @@ function renderAbsen(){
   $('#ab-cal').innerHTML=html;
   $('#ab-cal').querySelectorAll('.cd[data-t]').forEach(b=>b.onclick=()=>{AB.sel=b.dataset.t;renderAbsen();});
   const keys=Object.keys(AB.data).filter(k=>k.indexOf(AB.ym)===0).sort();
-  const cnt={};keys.forEach(k=>{const s=AB.data[k].shift;cnt[s]=(cnt[s]||0)+1;});
   $('#ab-sub').textContent=keys.length?keys.length+' hari terisi':'Belum ada jadwal';
-  $('#ab-recap').innerHTML=SKEYS.filter(k=>cnt[k]).map(k=>`<span class="lg c${k}">${SHIFT[k].n}: ${cnt[k]}</span>`).join('')||'<span style="color:var(--mute);font-size:13px">Belum ada jadwal bulan ini.</span>';
-  $('#ab-list').innerHTML=keys.map(t=>{
-    const e=AB.data[t],dd=new Date(+t.slice(0,4),+t.slice(5,7)-1,+t.slice(8,10)),s=SHIFT[e.shift];
-    return `<button class="arow${t===AB.sel?' sel':''}" data-t="${t}"><span class="ad">${HARI3[dd.getDay()]}, ${+t.slice(8)}</span>${sBadge(e.shift)}<span class="am">${s.n}${s.j?' · '+s.j:''}</span></button>`;
-  }).join('');
-  $('#ab-list').querySelectorAll('.arow').forEach(b=>b.onclick=()=>{AB.sel=b.dataset.t;renderAbsen();$('#ab-edt').scrollIntoView({behavior:'smooth',block:'start'});});
   fillEditor();
 }
 function fillEditor(){
@@ -745,30 +728,27 @@ $('#ab-prev').onclick=()=>shiftMonth(-1);
 $('#ab-next').onclick=()=>shiftMonth(1);
 $('#ab-today').onclick=()=>{const t=todayStr();AB.ym=t.slice(0,7);AB.sel=t;loadAbsen(AB.ym);};
 async function saveAbsenItems(items,okMsg,btn){
-  if(AB.busy)return false;
-  AB.busy=true;if(btn)btn.disabled=true;
+  const st=AB;
+  if(st.busy)return false;
+  st.busy=true;if(btn)btn.disabled=true;
   try{
-    await api('saveAbsen',items);
-    items.forEach(it=>{if(SHIFT[it.shift])AB.data[it.tanggal]={tanggal:it.tanggal,shift:it.shift};else delete AB.data[it.tanggal];});
-    renderAbsen();if(okMsg)toast(okMsg);
+    await api('saveAbsen',items,st.kind);
+    items.forEach(it=>{if(SHIFT[it.shift])st.data[it.tanggal]={tanggal:it.tanggal,shift:it.shift};else delete st.data[it.tanggal];});
+    if(st===AB){renderAbsen();if(okMsg)toast(okMsg);}
     return true;
   }catch(e){toast('Gagal: '+e.message);return false;}
-  finally{AB.busy=false;if(btn)btn.disabled=false;}
+  finally{st.busy=false;if(btn)btn.disabled=false;}
 }
 $('#ab-del').onclick=()=>{
   if(!AB.data[AB.sel])return toast('Tanggal ini belum ada jadwal');
   saveAbsenItems([{tanggal:AB.sel,shift:''}],'Jadwal tanggal ini dikosongkan',$('#ab-del'));
 };
-$('#ab-rgo').onclick=()=>{
-  const f=$('#ab-from').value,t=$('#ab-to').value,k=$('#ab-rs').value;
-  if(!f||!t)return toast('Isi tanggal dari dan sampai');
-  if(f>t)return toast('Tanggal "dari" harus sebelum "sampai"');
-  const d=new Date(f+'T00:00:00'),end=new Date(t+'T00:00:00');
-  if(Math.round((end-d)/864e5)+1>62)return toast('Maksimal 62 hari sekali isi');
-  const items=[];
-  while(d<=end){items.push({tanggal:ymdOf(d),shift:k});d.setDate(d.getDate()+1);}
-  saveAbsenItems(items,items.length+' hari terisi ✓',$('#ab-rgo'));
-};
+$('#jd-seg').querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  AB=JD[b.dataset.k];
+  $('#jd-seg').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  $('#ab-h').textContent=JNAMA[AB.kind];
+  absInit();loadAbsen(AB.ym);
+});
 
 /* ---------- PROFIL ---------- */
 const PF=['nama','nip','pangkat','jabatan','unit','atasan','tempat'];
