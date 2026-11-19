@@ -826,8 +826,11 @@ $('#s-save').onclick=async()=>{
 const SHIFT_ABSEN={
   '1':{n:'Shift 1 · Pagi',j:'07.00–15.00',b:'Pagi'},
   '2':{n:'Shift 2 · Sore',j:'15.00–23.00',b:'Sore'},
-  '3':{n:'Shift 3 · Malam',j:'23.00–07.00',b:'Malam'}
+  '3':{n:'Shift 3 · Malam',j:'23.00–07.00',b:'Malam'},
+  'P':{n:'Lepas Piket',j:'',b:'Lepas'},
+  'L':{n:'Libur',j:'',b:'Libur'}
 };
+const KEYS_ABSEN=['1','2','3','P','L'];
 const KEYS_ABSEN=['1','2','3'];
 /* Warna khusus: Lepas Piket & Libur keduanya merah */
 const SHIFT_MASUK={
@@ -878,7 +881,7 @@ function renderAbsen(){
     if(e&&SHIFT_ABSEN[e.shift])cls.push('c'+e.shift);else{cls.push('e');if(dow===0)cls.push('sun');}
     if(t===today)cls.push('today');if(t===AB.sel)cls.push('sel');
     const sh=e&&SHIFT_ABSEN[e.shift]?SHIFT_ABSEN[e.shift]:null;
-    html+=`<button class="${cls.join(' ')}" data-t="${t}" aria-label="${d}${sh?' '+sh.n:''}"><span class="dn">${d}</span>${sh?`<span class="tt"><span class="tg">${sh.b}</span><span class="tj">${sh.j.replace(/\.00/g,'')}</span></span>`:'<span></span>'}</button>`;
+    html+=`<button class="${cls.join(' ')}" data-t="${t}" aria-label="${d}${sh?' '+sh.n:''}"><span class="dn">${d}</span>${sh?`<span class="tt"><span class="tg">${sh.b}</span>${sh.j?`<span class="tj">${sh.j.replace(/\.00/g,'')}</span>`:''}</span>`:'<span></span>'}</button>`;
   }
   $('#ab-cal').innerHTML=html;
   $('#ab-cal').querySelectorAll('.cd[data-t]').forEach(b=>b.onclick=()=>{AB.sel=b.dataset.t;renderAbsen();});
@@ -886,9 +889,9 @@ function renderAbsen(){
   const cnt={};keys.forEach(k=>{const s=AB.data[k].shift;cnt[s]=(cnt[s]||0)+1;});
   $('#ab-sub').textContent=keys.length?keys.length+' hari terisi':'Belum ada jadwal';
   $('#ab-recap').innerHTML=KEYS_ABSEN.filter(k=>cnt[k]).map(k=>`<span class="lg c${k}">${SHIFT_ABSEN[k].n}: ${cnt[k]}</span>`).join('')||'<span style="color:var(--mute);font-size:13px">Belum ada jadwal bulan ini.</span>';
-  $('#ab-list').innerHTML=keys.map(t=>{
+    $('#ab-list').innerHTML=keys.map(t=>{
     const e=AB.data[t],dd=new Date(+t.slice(0,4),+t.slice(5,7)-1,+t.slice(8,10)),s=SHIFT_ABSEN[e.shift];
-    return `<button class="arow${t===AB.sel?' sel':''}" data-t="${t}"><span class="ad">${HARI3[dd.getDay()]}, ${+t.slice(8)}</span>${sBadgeAbsen(e.shift)}<span class="am">${s.n} · ${s.j}</span></button>`;
+    return `<button class="arow${t===AB.sel?' sel':''}" data-t="${t}"><span class="ad">${HARI3[dd.getDay()]}, ${+t.slice(8)}</span>${sBadgeAbsen(e.shift)}<span class="am">${s.n}${s.j?' · '+s.j:''}</span></button>`;
   }).join('');
   $('#ab-list').querySelectorAll('.arow').forEach(b=>b.onclick=()=>{AB.sel=b.dataset.t;renderAbsen();$('#ab-edt').scrollIntoView({behavior:'smooth',block:'start'});});
   fillEditorAbsen();
@@ -897,7 +900,7 @@ function fillEditorAbsen(){
   const e=AB.data[AB.sel],cur=e&&SHIFT_ABSEN[e.shift]?e.shift:'';
   $('#ab-edt').textContent=hariTgl(AB.sel);
   $('#ab-edsub').textContent=cur?'Shift saat ini: '+SHIFT_ABSEN[cur].n+'. Ketuk untuk menggantinya.':'Belum ada jadwal. Ketuk salah satu shift di bawah.';
-  $('#ab-chips').innerHTML=KEYS_ABSEN.map(k=>`<button class="chip${cur===k?' on':''}" data-k="${k}"><span class="sw c${k}"></span>${SHIFT_ABSEN[k].n}<small>${SHIFT_ABSEN[k].j}</small></button>`).join('');
+  $('#ab-chips').innerHTML=KEYS_ABSEN.map(k=>`<button class="chip${cur===k?' on':''}" data-k="${k}"><span class="sw c${k}"></span>${SHIFT_ABSEN[k].n}${SHIFT_ABSEN[k].j?`<small>${SHIFT_ABSEN[k].j}</small>`:''}</button>`).join('');
   $('#ab-chips').querySelectorAll('.chip').forEach(b=>b.onclick=()=>setAbsen(b.dataset.k));
 }
 function nextDay(t){return ymdOf(new Date(+t.slice(0,4),+t.slice(5,7)-1,+t.slice(8,10)+1));}
