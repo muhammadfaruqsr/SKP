@@ -15,39 +15,16 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  padding-bottom:calc(var(--nav-h) + 24px + env(safe-area-inset-bottom));
-}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:calc(var(--nav-h) + 24px + env(safe-area-inset-bottom))}
 .wrap{max-width:760px;margin:0 auto;padding:0 16px}
-
-/* ===== Header cozy modern ===== */
-.top{
-  position:relative;
-  background:linear-gradient(135deg,#0f766e 0%,#14958a 55%,#2bb3a3 100%);
-  color:#fff;padding:16px 0 18px;
-  overflow:hidden;
-}
-.top::before{
-  content:'';position:absolute;top:-60%;right:-20%;
-  width:320px;height:320px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 70%);
-  pointer-events:none;
-}
-.top::after{
-  content:'';position:absolute;bottom:-40%;left:-10%;
-  width:240px;height:240px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 70%);
-  pointer-events:none;
-}
+.top{position:relative;background:linear-gradient(135deg,#0f766e 0%,#14958a 55%,#2bb3a3 100%);color:#fff;padding:16px 0 18px;overflow:hidden}
+.top::before{content:'';position:absolute;top:-60%;right:-20%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 70%);pointer-events:none}
+.top::after{content:'';position:absolute;bottom:-40%;left:-10%;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 70%);pointer-events:none}
 .top .wrap{position:relative;display:flex;gap:12px;align-items:center;z-index:1}
 .brand-ic{width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.2);display:grid;place-items:center;flex:none;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.15)}
 .brand-ic .ic{width:22px;height:22px}
 .top h1{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}
 .top p{margin:1px 0 0;font-size:12px;opacity:.85}
-
 main{padding-top:16px;padding-bottom:12px}
 .tab{display:none}.tab.on{display:block;animation:fade .25s}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -80,7 +57,7 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 .who a{margin-left:auto;font-size:13px;font-weight:600;color:var(--brand-d);cursor:pointer;white-space:nowrap}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
 .th{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#eef4f3}
-.th img{width:100%;height:100%;object-fit:cover}
+.th img{width:100%;height:100%;object-fit:cover;display:block}
 .th button{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;display:grid;place-items:center;cursor:pointer}
 .th .ic{width:14px;height:14px}
 .result{border:2px solid #a7e3da;background:linear-gradient(180deg,#effaf8,#fff)}
@@ -100,6 +77,7 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 .acts{display:flex;gap:6px;flex:none}
 .ib{width:36px;height:36px;border-radius:10px;border:0;background:#eef4f3;color:var(--ink);display:grid;place-items:center;cursor:pointer;text-decoration:none}
 .ib:hover{background:#e0ebe9}.ib.dng{color:var(--danger)}
+.ib.pri{background:var(--brand);color:#fff}.ib.pri:hover{background:var(--brand-d)}
 .ib .ic{width:17px;height:17px}
 @media(max-width:480px){.hist{flex-wrap:wrap}.acts{width:100%;justify-content:flex-end}}
 .empty{text-align:center;color:var(--mute);padding:36px 16px}
@@ -114,7 +92,7 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 .prev img{max-width:100%;max-height:100%;object-fit:contain}
 .up small{display:block;color:var(--mute);font-size:12px;margin:2px 0 8px}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 20px + env(safe-area-inset-bottom));transform:translate(-50%,30px);background:#0f1f1c;color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:99;max-width:90vw}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 20px + env(safe-area-inset-bottom));transform:translate(-50%,30px);background:#0f1f1c;color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:99;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .modal{position:fixed;inset:0;background:rgba(15,31,28,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:98}
 .modal.open{display:flex}
@@ -145,13 +123,10 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 .cd.today .dn{text-decoration:underline;text-underline-offset:3px}
 .cd.sel{outline:2.5px solid var(--ink);outline-offset:1px;z-index:1}
 .cd.e.sel{background:var(--brand-l)}
-/* Shift kerja (Jadwal Absen) */
 .c1{background:#f59e0b;color:#3b2300}
 .c2{background:#2563eb;color:#fff}
 .c3{background:#7c3aed;color:#fff}
-/* Status khusus: Lepas Piket & Libur (keduanya merah) */
 .cP,.cL{background:#dc2626;color:#fff}
-/* Status masuk lainnya */
 .cM{background:#0d9488;color:#fff}
 .bd{font-size:9.5px;font-weight:700;border-radius:6px;padding:2px 5px;line-height:1.1;white-space:nowrap;flex:none}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
@@ -173,15 +148,14 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 #pv-box{flex:1;overflow:auto;padding:12px 0;-webkit-overflow-scrolling:touch}
 #pv-sizer{position:relative;margin:0 auto}
 #pv-inner{position:absolute;top:0;left:0;width:595px;transform-origin:0 0}
-/* Preview A4 versi ringkas (mendekati hasil PDF F4 final) */
 .pg{width:595px;min-height:842px;background:#fff;padding:30px;box-sizing:border-box;box-shadow:0 2px 12px rgba(0,0,0,.15);margin-bottom:16px;font:10px/1.2 Arial,Helvetica,sans-serif;color:#000}
 .pg table{border-collapse:collapse;width:100%}
 .pg td{border:.75px solid #000;padding:3px 5px;vertical-align:top;white-space:normal;word-break:break-word}
 .pg td.lg{text-align:center;vertical-align:middle;padding:4px}
-.pg td.lg img{max-width:100px;max-height:100px}
+.pg td.lg img{max-width:100px;max-height:100px;display:block;margin:0 auto}
 .pg td.nb{padding:0}
-.pg table.ph td{border:0;text-align:center;vertical-align:middle;padding:4px}
-.pg table.ph img{max-width:172px;max-height:140px}
+.pg td.photo-cell{width:50%;height:130px;padding:4px;text-align:center;vertical-align:middle}
+.pg td.photo-cell img{display:block;max-width:100%;max-height:122px;margin:0 auto;object-fit:contain}
 .pg .sig{margin:14px 0 0 321px;width:220px}
 .pg .sg{height:70px;padding-left:6px}.pg .sg img{max-height:70px;max-width:150px}
 .pv-f{display:flex;gap:10px;background:#fff;padding:12px 16px;box-shadow:0 -1px 6px rgba(0,0,0,.08)}
@@ -192,46 +166,24 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 .rhk-h input{max-width:130px;font-weight:700}
 .rhk-h .hint{flex:1;font-size:12px;color:var(--mute)}
 .rhk-card>.btn{margin-top:2px}
-
-/* ===== Jadwal: segmented tabs ===== */
 .jtabs{display:flex;gap:6px;background:#eef4f3;padding:5px;border-radius:14px;margin-bottom:14px}
 .jtabs button{flex:1;border:0;background:none;font:inherit;font-size:13px;font-weight:600;padding:11px 8px;border-radius:10px;color:var(--mute);cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:6px}
 .jtabs button .ic{width:16px;height:16px}
 .jtabs button.on{background:#fff;color:var(--brand-d);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .jpanel{display:none}.jpanel.on{display:block;animation:fade .2s}
-
-/* ===== Bottom nav ===== */
-#nav{
-  position:fixed;left:0;right:0;bottom:0;z-index:30;
-  background:rgba(255,255,255,.94);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
-  border-top:1px solid rgba(15,31,28,.06);
-  box-shadow:0 -4px 24px rgba(15,31,28,.06);
-  display:flex;align-items:stretch;justify-content:space-around;
-  height:var(--nav-h);
-  padding:0 6px env(safe-area-inset-bottom);
-  gap:0;
-}
-#nav button{
-  flex:1;border:0;background:none;padding:8px 4px;border-radius:14px;
-  font:inherit;font-size:10.5px;font-weight:600;letter-spacing:.01em;
-  color:var(--mute);display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;cursor:pointer;transition:.18s;position:relative;min-width:0;
-  -webkit-tap-highlight-color:transparent;
-}
+#nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-top:1px solid rgba(15,31,28,.06);box-shadow:0 -4px 24px rgba(15,31,28,.06);display:grid;grid-template-columns:1fr 1fr 1.2fr 1fr 1fr;align-items:end;height:var(--nav-h);padding:0 4px env(safe-area-inset-bottom)}
+#nav button{border:0;background:none;padding:8px 2px;font:inherit;font-size:10.5px;font-weight:600;letter-spacing:.01em;color:var(--mute);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;transition:.18s;position:relative;min-width:0;height:100%;-webkit-tap-highlight-color:transparent}
 #nav button .ic{width:22px;height:22px;transition:.18s}
 #nav button.on{color:var(--brand-d)}
 #nav button.on .ic{transform:translateY(-1px)}
 #nav button.on::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:12px;background:var(--brand-l);z-index:-1}
-#nav .nav-fab{flex:none;width:70px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:6px}
+#nav .nav-fab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 0 6px;height:100%;border:0;background:none;cursor:pointer}
 #nav .nav-fab .fab{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#0f766e,#14958a 70%,#2bb3a3);color:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(15,118,110,.35), 0 2px 6px rgba(15,118,110,.25);transition:.2s cubic-bezier(.34,1.56,.64,1);margin-top:-10px}
 #nav .nav-fab .fab .ic{width:26px;height:26px}
 #nav .nav-fab span{color:var(--brand-d);font-weight:700;font-size:10.5px;margin-top:5px;display:block;letter-spacing:.01em}
 #nav .nav-fab.on .fab{transform:translateY(-2px) scale(1.03);box-shadow:0 12px 26px rgba(15,118,110,.45)}
+#nav .nav-fab.on span{color:var(--brand-d)}
 #nav .nav-fab::before{display:none}
-
-/* ===== Riwayat bulanan ===== */
 .hmon{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .hmon .calt{flex:1;text-align:center}
 .hmon .calt b{font-size:17px;display:block;color:var(--ink)}
@@ -239,14 +191,41 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 .hbar{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
 .hsum{display:flex;flex-wrap:wrap;gap:6px}
 .hsum .lg{background:var(--brand-l);color:var(--brand-d)}
+.greet{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#0f766e,#14958a 70%,#2bb3a3);color:#fff;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,118,110,.25)}
+.greet-ic{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.2);display:grid;place-items:center;flex:none;border:1px solid rgba(255,255,255,.2)}
+.greet h2{margin:0;font-size:16px;font-weight:700;line-height:1.3}
+.greet p{margin:2px 0 0;font-size:12.5px;opacity:.9}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.stat{background:#f6faf9;border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-size:22px;font-weight:800;color:var(--brand-d)}
+.stat small{font-size:11px;color:var(--mute);font-weight:600}
+.chart-box{background:#f6faf9;border-radius:14px;padding:12px;margin-bottom:12px;position:relative;height:200px}
+.chart-box canvas{width:100%!important;height:100%!important;display:block}
+.donut-row{display:flex;gap:14px;align-items:center;background:#f6faf9;border-radius:14px;padding:12px}
+.donut-row canvas{flex:none}
+.donut-legend{flex:1;font-size:12px;min-width:0}
+.donut-legend div{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.donut-legend .dot{width:10px;height:10px;border-radius:3px;flex:none}
+.donut-legend b{margin-left:auto;color:var(--brand-d)}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.quick{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink);transition:.15s}
+.quick:hover{border-color:var(--brand);background:#f8fbfa}
+.quick .q-ic{width:36px;height:36px;border-radius:10px;background:var(--brand-l);color:var(--brand-d);display:grid;place-items:center;margin-bottom:6px}
+.quick b{font-size:14px}.quick small{font-size:11.5px;color:var(--mute)}
+.report-card{border:1.5px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;background:#fff;position:relative}
+.report-card .rc-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.report-card .rc-num{width:32px;height:32px;border-radius:10px;background:var(--brand-l);color:var(--brand-d);display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.report-card .rc-title{flex:1;font-weight:700;font-size:14px}
+.report-card .rc-del{width:32px;height:32px;border-radius:9px;border:0;background:#fee2e2;color:var(--danger);display:grid;place-items:center;cursor:pointer;flex:none}
+.report-card .rc-del .ic{width:16px;height:16px}
+.report-card .rc-del[disabled]{opacity:.4;cursor:not-allowed}
+.add-report-row{display:flex;gap:8px;margin-top:8px}
+.add-report-row .btn{flex:1}
 </style>
 <meta name="theme-color" content="#0f766e">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SKP Harian">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
@@ -259,37 +238,64 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 
 <main class="wrap">
 
-<!-- ================= BUAT ================= -->
-<section class="tab on" id="tab-buat">
+<!-- ================= BERANDA ================= -->
+<section class="tab on" id="tab-beranda">
+  <div class="greet">
+    <div class="greet-ic" data-ic="user"></div>
+    <div>
+      <h2>Selamat Bertugas, <span id="g-nama">–</span></h2>
+      <p>Semoga sehat dan berkah selalu 🤲</p>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Progress SKP Bulan Ini</h2>
+    <p class="sub" id="g-sub">Memuat data…</p>
+    <div class="stat-row" id="g-stats"></div>
+    <div class="chart-box"><canvas id="g-chart"></canvas></div>
+    <div class="donut-row">
+      <canvas id="g-donut" width="140" height="140"></canvas>
+      <div id="g-legend" class="donut-legend"></div>
+    </div>
+    <div class="hmon" style="margin-top:16px;margin-bottom:0">
+      <button class="ib" id="g-prev" aria-label="Bulan sebelumnya">‹</button>
+      <div class="calt"><b id="g-title">–</b><small id="g-count"></small></div>
+      <button class="ib" id="g-next" aria-label="Bulan berikutnya">›</button>
+    </div>
+  </div>
+  <div class="card" id="g-rhk-card" style="display:none">
+    <h2>Kelengkapan RHK Bulan Ini</h2>
+    <p class="sub">Setiap RHK yang terdaftar wajib ada minimal 1 laporan di bulan ini.</p>
+    <div id="g-rhk-check"></div>
+  </div>
+  <div class="quick-grid">
+    <button class="quick" data-go="buat"><div class="q-ic" data-ic="plus"></div><b>Buat SKP</b><small>Baru</small></button>
+    <button class="quick" data-go="riwayat"><div class="q-ic" data-ic="clock"></div><b>Riwayat</b><small id="g-r-count">0 laporan</small></button>
+    <button class="quick" data-go="absen"><div class="q-ic" data-ic="cal"></div><b>Jadwal</b><small>Absen & Masuk</small></button>
+    <button class="quick" id="g-export-all"><div class="q-ic" data-ic="file"></div><b>Export</b><small>PDF/Word/Backup</small></button>
+  </div>
+</section>
+
+<!-- ================= BUAT SKP ================= -->
+<section class="tab" id="tab-buat">
   <div class="who"><div class="brand-ic" style="background:#fff;color:var(--brand)" data-ic="user"></div>
     <div><b id="w-nama">–</b><small id="w-nip">–</small></div><a id="w-edit">Ubah profil</a></div>
-
   <div class="card">
-    <h2>Tanggal</h2><p class="sub">Tanggal pelaksanaan (juga dipakai sebagai tanggal surat).</p>
+    <h2>Tanggal &amp; Tempat</h2><p class="sub">Berlaku untuk semua laporan di sesi ini.</p>
     <div class="grid">
       <div class="field"><label for="f-tanggal">Tanggal pelaksanaan</label><input type="date" id="f-tanggal"></div>
       <div class="field"><label for="f-tempat">Tempat surat</label><input type="text" id="f-tempat" placeholder="Contoh: Sumedang"></div>
     </div>
+    <label class="chk"><input type="checkbox" id="f-ttd" checked> Sertakan tanda tangan di PDF</label>
   </div>
-
   <div class="card">
-    <h2>Isi laporan</h2><p class="sub">Pilih kalimat dari daftar (diatur di menu Setting). Isinya tetap bisa diedit.</p>
-    <div id="fields"></div>
+    <h2>Daftar Laporan</h2><p class="sub">Isi laporan sebanyak yang Anda butuhkan. Tiap laporan punya RHK, kegiatan, dan dokumentasi sendiri.</p>
+    <div id="reports"></div>
+    <div class="add-report-row"><button class="btn ghost" id="btn-add-report"><i data-ic="plus"></i><span>Tambah Laporan</span></button></div>
   </div>
-
-  <div class="card">
-    <h2>Dokumentasi</h2><p class="sub">Foto kegiatan, maksimal 6. Tampil di halaman 2.</p>
-    <div class="thumbs" id="thumbs"></div>
-    <label class="btn ghost sm" style="display:inline-flex;margin:0"><i data-ic="image"></i><span id="photo-lbl">Tambah foto</span>
-      <input type="file" id="photo-in" accept="image/*" multiple hidden></label>
-    <label class="chk" style="margin-top:14px!important"><input type="checkbox" id="f-ttd" checked> Sertakan tanda tangan</label>
-  </div>
-
   <div class="genrow">
     <button class="btn ghost block" id="btn-prev"><i data-ic="eye"></i><span>Pratinjau</span></button>
     <button class="btn pri block" id="btn-gen"><i data-ic="file"></i><span>Buat PDF &amp; Simpan</span></button>
   </div>
-
   <div class="card result" id="result" style="display:none;margin-top:14px">
     <div class="ok"><span data-ic="check"></span>PDF berhasil disimpan di Google Drive</div>
     <small id="r-name" style="color:var(--mute)"></small>
@@ -317,14 +323,12 @@ textarea{resize:none;overflow:hidden;min-height:76px}
   </div>
 </section>
 
-<!-- ================= JADWAL (Absen + Masuk) ================= -->
+<!-- ================= JADWAL ================= -->
 <section class="tab" id="tab-absen">
   <div class="jtabs" id="jtabs">
     <button data-j="absen" class="on"><i data-ic="clock"></i>Jadwal Absen</button>
     <button data-j="masuk"><i data-ic="cal"></i>Jadwal Masuk</button>
   </div>
-
-  <!-- ==== Panel: Jadwal Absen ==== -->
   <div class="jpanel on" id="jp-absen">
     <div class="card">
       <h2 style="margin-bottom:12px">Kalender Absen</h2>
@@ -338,7 +342,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <div class="cal" id="ab-cal"></div>
       <div class="row" style="margin-top:12px"><button class="btn ghost sm" id="ab-today">Ke bulan ini</button></div>
     </div>
-
     <div class="card">
       <h2 id="ab-edt">Pilih tanggal</h2>
       <p class="sub" id="ab-edsub">Ketuk tanggal pada kalender, lalu pilih shift-nya.</p>
@@ -346,7 +349,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <label class="chk" style="margin:0 0 14px!important"><input type="checkbox" id="ab-auto" checked> Pindah otomatis ke tanggal berikutnya</label>
       <button class="btn ghost block" id="ab-del">Kosongkan tanggal ini</button>
     </div>
-
     <div class="card">
       <h2>Isi rentang tanggal</h2>
       <p class="sub">Isi banyak hari sekaligus dengan satu shift (maks 62 hari).</p>
@@ -357,7 +359,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <div class="field"><label for="ab-rs">Shift</label><select id="ab-rs" style="margin-bottom:0;color:var(--ink)"></select></div>
       <button class="btn ghost block" id="ab-rgo" style="margin-top:12px"><i data-ic="check"></i><span>Terapkan ke rentang</span></button>
     </div>
-
     <div class="card">
       <h2>Rekap bulan ini</h2>
       <p class="sub">Ketuk salah satu baris untuk memilih tanggalnya.</p>
@@ -365,8 +366,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <div id="ab-list"></div>
     </div>
   </div>
-
-  <!-- ==== Panel: Jadwal Masuk ==== -->
   <div class="jpanel" id="jp-masuk">
     <div class="card">
       <h2 style="margin-bottom:12px">Kalender Masuk</h2>
@@ -380,7 +379,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <div class="cal" id="mk-cal"></div>
       <div class="row" style="margin-top:12px"><button class="btn ghost sm" id="mk-today">Ke bulan ini</button></div>
     </div>
-
     <div class="card">
       <h2 id="mk-edt">Pilih tanggal</h2>
       <p class="sub" id="mk-edsub">Ketuk tanggal pada kalender, lalu pilih status masuknya.</p>
@@ -388,7 +386,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <label class="chk" style="margin:0 0 14px!important"><input type="checkbox" id="mk-auto" checked> Pindah otomatis ke tanggal berikutnya</label>
       <button class="btn ghost block" id="mk-del">Kosongkan tanggal ini</button>
     </div>
-
     <div class="card">
       <h2>Isi rentang tanggal</h2>
       <p class="sub">Isi banyak hari sekaligus dengan satu status (maks 62 hari).</p>
@@ -399,7 +396,6 @@ textarea{resize:none;overflow:hidden;min-height:76px}
       <div class="field"><label for="mk-rs">Status</label><select id="mk-rs" style="margin-bottom:0;color:var(--ink)"></select></div>
       <button class="btn ghost block" id="mk-rgo" style="margin-top:12px"><i data-ic="check"></i><span>Terapkan ke rentang</span></button>
     </div>
-
     <div class="card">
       <h2>Rekap bulan ini</h2>
       <p class="sub">Ketuk salah satu baris untuk memilih tanggalnya.</p>
@@ -411,58 +407,80 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 
 <!-- ================= SETTING ================= -->
 <section class="tab" id="tab-setting">
-  <div class="card">
-    <h2>Daftar kalimat</h2>
-    <p class="sub">Daftar ini menjadi pilihan saat membuat SKP. Tiap RHK punya jenis kegiatan dan output sendiri yang terisi otomatis saat RHK dipilih. Enter = baris baru di PDF.</p>
-    <div class="seg" id="seg"></div>
-    <div id="s-list"></div>
-    <div class="row" style="margin-top:6px">
-      <button class="btn ghost sm" id="s-add"><i data-ic="plus"></i>Tambah kalimat</button>
+  <div class="jtabs" id="st-tabs">
+    <button data-s="rhk" class="on"><i data-ic="file"></i>Kalimat RHK</button>
+    <button data-s="waktu"><i data-ic="clock"></i>Waktu</button>
+    <button data-s="profil"><i data-ic="user"></i>Profil</button>
+  </div>
+  <div class="jpanel on" id="sp-rhk">
+    <div class="card">
+      <h2 style="margin-bottom:10px">Template RHK</h2>
+      <p class="sub">Pilih template untuk mengisi daftar RHK secara otomatis. Data masih bisa diedit setelahnya.</p>
+      <div class="row" style="gap:8px">
+        <button class="btn pri" id="tpl-asrama" style="flex:1"><i data-ic="file"></i><span>Wali Asrama</span></button>
+        <button class="btn pri" id="tpl-asuh" style="flex:1"><i data-ic="file"></i><span>Wali Asuh</span></button>
+      </div>
     </div>
-  </div>
-  <button class="btn pri block" id="s-save"><i data-ic="check"></i>Simpan setting</button>
-</section>
-
-<!-- ================= PROFIL ================= -->
-<section class="tab" id="tab-profil">
-  <div class="card">
-    <h2>Data pegawai</h2><p class="sub">Terisi otomatis di setiap laporan.</p>
-    <div class="field"><label for="p-nama">Nama</label><input type="text" id="p-nama"></div>
-    <div class="grid">
-      <div class="field"><label for="p-nip">NIP</label><input type="text" id="p-nip" inputmode="numeric"></div>
-      <div class="field"><label for="p-pangkat">Pangkat/Gol. Ruang</label><input type="text" id="p-pangkat"></div>
+    <div class="card">
+      <h2>Daftar RHK</h2>
+      <p class="sub">Tiap RHK punya jenis kegiatan dan output sendiri. Label hanya penanda, tidak tampil di PDF.</p>
+      <div id="s-list-rhk"></div>
+      <div class="row" style="margin-top:6px"><button class="btn ghost sm" id="s-add-rhk"><i data-ic="plus"></i>Tambah RHK</button></div>
     </div>
-    <div class="field"><label for="p-jabatan">Jabatan</label><input type="text" id="p-jabatan"></div>
-    <div class="field"><label for="p-unit">Unit Kerja</label><input type="text" id="p-unit"></div>
-    <div class="field"><label for="p-atasan">Atasan</label><input type="text" id="p-atasan"></div>
-    <div class="field"><label for="p-tempat">Tempat surat (default)</label><input type="text" id="p-tempat"></div>
+    <button class="btn pri block" id="s-save-rhk"><i data-ic="check"></i>Simpan RHK</button>
   </div>
-  <div class="card">
-    <h2>Logo &amp; tanda tangan</h2><p class="sub">Logo tampil di kotak profil. Tanda tangan di bagian bawah surat (disarankan PNG transparan).</p>
-    <div class="up"><div class="prev" id="logo-prev"></div><div><b>Logo</b><small>Kolom kiri tabel profil</small>
-      <div class="row"><label class="btn ghost sm" style="margin:0">Pilih gambar<input type="file" id="logo-in" accept="image/*" hidden></label><button class="btn ghost sm" id="logo-rm">Hapus</button></div></div></div>
-    <div class="up"><div class="prev" id="ttd-prev"></div><div><b>Tanda tangan</b><small>Di atas nama &amp; NIP</small>
-      <div class="row"><label class="btn ghost sm" style="margin:0">Pilih gambar<input type="file" id="ttd-in" accept="image/*" hidden></label><button class="btn ghost sm" id="ttd-rm">Hapus</button></div></div></div>
+  <div class="jpanel" id="sp-waktu">
+    <div class="card">
+      <h2>Daftar kalimat waktu</h2>
+      <p class="sub">Pilihan untuk field "Waktu Pelaksanaan".</p>
+      <div id="s-list-waktu"></div>
+      <div class="row" style="margin-top:6px"><button class="btn ghost sm" id="s-add-waktu"><i data-ic="plus"></i>Tambah kalimat</button></div>
+    </div>
+    <button class="btn pri block" id="s-save-waktu"><i data-ic="check"></i>Simpan Waktu</button>
   </div>
-  <div class="card">
-    <h2>Google Drive</h2>
-    <label class="chk" style="margin-top:6px!important"><input type="checkbox" id="p-share"> Siapa saja yang punya link boleh melihat PDF (agar link bisa dibagikan ke atasan)</label>
+  <div class="jpanel" id="sp-profil">
+    <div class="card">
+      <h2>Data pegawai</h2><p class="sub">Terisi otomatis di setiap laporan.</p>
+      <div class="field"><label for="p-nama">Nama</label><input type="text" id="p-nama"></div>
+      <div class="grid">
+        <div class="field"><label for="p-nip">NIP</label><input type="text" id="p-nip" inputmode="numeric"></div>
+        <div class="field"><label for="p-pangkat">Pangkat/Gol. Ruang</label><input type="text" id="p-pangkat"></div>
+      </div>
+      <div class="field"><label for="p-jabatan">Jabatan</label><input type="text" id="p-jabatan"></div>
+      <div class="field"><label for="p-unit">Unit Kerja</label><input type="text" id="p-unit"></div>
+      <div class="field"><label for="p-atasan">Atasan</label><input type="text" id="p-atasan"></div>
+      <div class="field"><label for="p-tempat">Tempat surat (default)</label><input type="text" id="p-tempat"></div>
+    </div>
+    <div class="card">
+      <h2>Logo &amp; tanda tangan</h2><p class="sub">Logo tampil di kotak profil. Tanda tangan di bagian bawah surat.</p>
+      <div class="up"><div class="prev" id="logo-prev"></div><div><b>Logo</b><small>Kolom kiri tabel profil</small>
+        <div class="row"><label class="btn ghost sm" style="margin:0">Pilih gambar<input type="file" id="logo-in" accept="image/*" hidden></label><button class="btn ghost sm" id="logo-rm">Hapus</button></div></div></div>
+      <div class="up"><div class="prev" id="ttd-prev"></div><div><b>Tanda tangan</b><small>Di atas nama &amp; NIP</small>
+        <div class="row"><label class="btn ghost sm" style="margin:0">Pilih gambar<input type="file" id="ttd-in" accept="image/*" hidden></label><button class="btn ghost sm" id="ttd-rm">Hapus</button></div></div></div>
+    </div>
+    <div class="card">
+      <h2>Google Drive</h2>
+      <label class="chk" style="margin-top:6px!important"><input type="checkbox" id="p-share"> Siapa saja yang punya link boleh melihat PDF</label>
+    </div>
+    <div class="card">
+      <h2>Backup &amp; Restore</h2><p class="sub">Simpan semua data ke file, atau pulihkan dari file.</p>
+      <div class="row">
+        <button class="btn ghost sm" id="p-backup"><i data-ic="file"></i>Backup ke file</button>
+        <label class="btn ghost sm" style="margin:0">Restore dari file<input type="file" id="p-restore" accept="application/json" hidden></label>
+      </div>
+    </div>
+    <button class="btn pri block" id="p-save"><i data-ic="check"></i>Simpan profil</button>
   </div>
-  <button class="btn pri block" id="p-save"><i data-ic="check"></i>Simpan profil</button>
 </section>
 
 </main>
 
-<!-- ===== BOTTOM NAV ===== -->
 <nav id="nav">
   <button data-tab="riwayat"><i data-ic="clock"></i>Riwayat</button>
   <button data-tab="setting"><i data-ic="sliders"></i>Setting</button>
-  <button class="nav-fab" data-tab="buat" aria-label="Buat SKP">
-    <div class="fab"><i data-ic="plus"></i></div>
-    <span>Buat SKP</span>
-  </button>
+  <button class="nav-fab" data-tab="beranda" aria-label="Beranda"><div class="fab"><i data-ic="home"></i></div><span>Beranda</span></button>
   <button data-tab="absen"><i data-ic="cal"></i>Jadwal</button>
-  <button data-tab="profil"><i data-ic="user"></i>Profil</button>
+  <button data-tab="buat"><i data-ic="plus"></i>Buat SKP</button>
 </nav>
 
 <div id="pv">
@@ -474,16 +492,18 @@ textarea{resize:none;overflow:hidden;min-height:76px}
 <div class="toast" id="toast"></div>
 
 <script>
-/* Shim: mode mandiri (GitHub Pages / PWA) */
+/* ================================================================
+   SHIM — mode mandiri (GitHub Pages / PWA)
+   ================================================================ */
 (function(){
   if(typeof google!=='undefined'&&google.script&&google.script.run)return;
   const API_URL='https://script.google.com/macros/s/AKfycbwxlhxnNrbG0B4nXhUlhM05j8JcedgwMDN2qrSIJpzPeMHoCVcqBM_XTnoptG-feeIA9A/exec';
   const call=(fn,args)=>{
-    if(!/^https:\/\/script\.google\.com\/.+\/exec/.test(API_URL))return Promise.reject(new Error('API_URL di index.html belum diisi dengan URL /exec.'));
+    if(!/^https:\/\/script\.google\.com\/.+\/exec/.test(API_URL))return Promise.reject(new Error('API_URL belum diisi.'));
     return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:fn,args:args}),redirect:'follow',credentials:'omit'})
       .then(r=>{if(!r.ok)throw new Error('Server membalas HTTP '+r.status);return r.json();})
       .then(j=>{if(!j||!j.ok)throw new Error((j&&j.error)||'Server mengembalikan data kosong');return j.data;})
-      .catch(e=>{throw (e instanceof TypeError)?new Error('Tidak bisa menghubungi server. Pastikan akses deployment "Siapa saja", URL /exec benar, dan internet aktif.'):e;});
+      .catch(e=>{throw (e instanceof TypeError)?new Error('Tidak bisa menghubungi server.'):e;});
   };
   const mk=(ok,no)=>new Proxy({},{get:(_,k)=>{
     if(k==='withSuccessHandler')return f=>mk(f,no);
@@ -492,6 +512,10 @@ textarea{resize:none;overflow:hidden;min-height:76px}
   }});
   window.google={script:{run:mk(null,null)}};
 })();
+
+/* ================================================================
+   ICONS
+   ================================================================ */
 const ICONS={
 file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
 plus:'<path d="M12 5v14M5 12h14"/>',
@@ -508,35 +532,70 @@ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16
 chl:'<path d="M15 5l-7 7 7 7"/>',
 chr:'<path d="M9 5l7 7-7 7"/>',
 eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
-refresh:'<path d="M20 11a8 8 0 0 0-14-4M4 5v4h4M4 13a8 8 0 0 0 14 4M20 19v-4h-4"/>'
+refresh:'<path d="M20 11a8 8 0 0 0-14-4M4 5v4h4M4 13a8 8 0 0 0 14 4M20 19v-4h-4"/>',
+home:'<path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2z"/>'
 };
 const ic=n=>'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>';
 function hydrate(root){(root||document).querySelectorAll('[data-ic]').forEach(e=>{if(!e.dataset.done){e.insertAdjacentHTML('afterbegin',ic(e.dataset.ic));e.dataset.done=1;}});}
 
-const CATS=[{key:'rhk',label:'Jenis RHK'},{key:'waktu',label:'Waktu Pelaksanaan'},{key:'kegiatan',label:'Jenis Kegiatan'},{key:'output',label:'Output yang dihasilkan'}];
+/* ================================================================
+   KONSTANTA
+   ================================================================ */
+const CATS=[
+  {key:'rhk',label:'Jenis RHK'},
+  {key:'waktu',label:'Waktu Pelaksanaan'},
+  {key:'kegiatan',label:'Jenis Kegiatan'},
+  {key:'output',label:'Output yang dihasilkan'}
+];
 const BLN=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 const BLN_FULL=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 const HARI3=['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
-const S={profil:null,settings:{rhk:[],waktu:[],kegiatan:[],output:[]},riwayat:[],photos:[],cat:'rhk',logo:null,ttd:null,rmLogo:false,rmTtd:false};
+const S={profil:null,settings:{rhk:[],waktu:[],kegiatan:[],output:[]},riwayat:[],reports:[],logo:null,ttd:null,rmLogo:false,rmTtd:false};
+
+/* ================================================================
+   TEMPLATE RHK — WALI ASUH & WALI ASRAMA
+   ================================================================ */
+const TEMPLATES = {
+  wali_asrama: {
+    label: 'Wali Asrama',
+    rhk: [
+      {label:'RHK 1',text:'Melaksanakan penyusunan rencana kegiatan pembinaan penghuni asrama dan tata-tertib serta melaksanakan kegiatan pembinaan penghuni asrama pada Sekolah Rakyat sesuai dengan ketentuan yang berlaku',kegiatan:['Memimpin dan memantau kegiatan keagamaan pagi (shalat berjamaah/doa pagi) serta memantau kedisiplinan siswa bangun tepat waktu.','Memantau kebersihan kamar, kelengkapan seragam, dan kesiapan siswa berangkat ke sekolah sesuai tata tertib.','Mendampingi siswa saat makan siang serta kepulangan dari sekolah.','Memfasilitasi dan mendampingi kegiatan keterampilan hidup (life skills), olahraga, atau pelatihan mandiri siswa.','Mendampingi jam belajar mandiri, menegakkan tata tertib jam tenang, serta melakukan bimbingan/konseling jika ada pelanggaran disiplin.'],output:['Peserta didik mampu menerapkan nilai-nilai keagamaan, kedisiplinan, tanggung jawab, kemandirian, serta pola hidup bersih dan tertib dalam kehidupan sehari-hari di lingkungan asrama. Peserta didik juga mampu mengikuti rutinitas dan tata tertib asrama, menjaga kebersihan serta kerapian lingkungan, mengembangkan keterampilan hidup (life skills), berpartisipasi dalam kegiatan olahraga, serta melaksanakan kegiatan belajar mandiri secara tertib dan bertanggung jawab. Selain itu, peserta didik mampu menunjukkan perilaku positif, kepatuhan terhadap tata tertib, dan sikap saling menghargai sehingga tercipta kehidupan asrama yang aman, nyaman, tertib, dan kondusif.']},
+      {label:'RHK 2',text:'Menyediakan dokumen pemeliharaan fasilitas asrama yang sesuai dengan ketentuan',kegiatan:['Melakukan pemeriksaan (inspeksi) kondisi fisik kamar, fasilitas asrama, sanitasi, dan mencatat kerusakan fasilitas.','Mengajukan permohonan perbaikan ke unit Sarpras/Sekolah Rakyat.','Mendampingi dan mengawasi teknisi saat proses pemeliharaan/perbaikan berlangsung.','Menyusun jadwal pemeliharaan berkala (misal: jadwal servis AC, pembersihan tandon air, fogging, atau pengecatan).'],output:['Tersedianya dokumen pemeliharaan fasilitas asrama yang memuat hasil pemeriksaan kondisi fisik kamar, sarana dan prasarana, serta fasilitas sanitasi, termasuk pencatatan kerusakan dan kebutuhan perbaikan. Terlaksananya koordinasi pengajuan perbaikan kepada unit Sarana dan Prasarana, pendampingan serta pengawasan proses pemeliharaan fasilitas, dan penyusunan jadwal pemeliharaan secara berkala guna memastikan seluruh fasilitas asrama tetap terawat, berfungsi dengan baik, aman, dan layak digunakan untuk menunjang kenyamanan serta aktivitas peserta didik.']},
+      {label:'RHK 3',text:'Menyediakan laporan pembinaan penghuni asrama berupa kegiatan keagamaan dan keterampilan hidup yang sesuai dengan ketentuan.',kegiatan:['Memfasilitasi dan mendampingi kegiatan keterampilan hidup (life skills), olahraga, atau pelatihan mandiri siswa.','Memimpin dan memantau kegiatan keagamaan pagi (shalat berjamaah/doa pagi) serta memantau kedisiplinan siswa bangun tepat waktu.','Mendampingi kegiatan ibadah sore/malam dan makan malam bersama.','Melaksanakan Pembinaan dalam kegiatan Refleksi'],output:['Peserta didik mampu menerapkan nilai-nilai keagamaan melalui pembiasaan ibadah secara rutin, baik pada pagi, sore, maupun malam hari, serta menunjukkan sikap disiplin dalam menjalankan aktivitas harian di asrama. Peserta didik juga mampu mengembangkan keterampilan hidup (life skills), kemandirian, tanggung jawab, dan kerja sama melalui kegiatan olahraga maupun pelatihan mandiri. Selain itu, peserta didik mampu mengikuti kegiatan makan bersama dan refleksi sebagai sarana pembentukan karakter, penguatan nilai-nilai positif, evaluasi diri, serta peningkatan kesadaran dalam berperilaku sesuai dengan tata tertib dan norma yang berlaku di lingkungan asrama.']},
+      {label:'RHK 4',text:'Menyediakan laporan penerapan disiplin dan pelaksanaan tata tertib asrama yang sesuai ketentuan dan dievaluasi secara berkala.',kegiatan:['Memantau kebersihan kamar, kelengkapan seragam, dan kesiapan siswa berangkat ke sekolah sesuai tata tertib.','Mendampingi jam belajar mandiri, menegakkan tata tertib jam tenang, serta melakukan bimbingan/konseling jika ada pelanggaran disiplin.','Memeriksa presensi (absensi) akhir malam, memastikan keamanan area asrama, dan mengunci pintu.'],output:['Peserta didik mampu menerapkan kedisiplinan dan mematuhi tata tertib asrama dalam kehidupan sehari-hari, meliputi menjaga kebersihan dan kerapian kamar, menggunakan seragam sesuai ketentuan, serta mengikuti jadwal kegiatan secara tertib dan bertanggung jawab. Peserta didik juga mampu melaksanakan kegiatan belajar mandiri dengan disiplin, menjaga ketenangan dan ketertiban lingkungan asrama, serta meningkatkan kesadaran terhadap pentingnya kepatuhan terhadap peraturan. Selain itu, terlaksananya pemantauan presensi dan keamanan asrama pada malam hari guna menciptakan lingkungan hunian yang aman, tertib, nyaman, dan kondusif.']},
+      {label:'RHK 5',text:'Menyediakan laporan pelaksanaan tugas dan kewajiban wali asrama kepada Kepala Sekolah secara lengkap dan tepat waktu.',kegiatan:['Mengolah catatan harian, mendokumentasikan kegiatan, dan menyusun draft laporan berkala untuk Kepala Sekolah.','Mendampingi Siswa ke Unit Kesehatan ketika ada Siswa yang sakit dan berkoordinasi dengan petugas kesehatan','Menyusun rekapitulasi kejadian/kegiatan selama seminggu (catatan pelanggaran disiplin, perkembangan siswa, dan rekapitulasi fasilitas rusak/perbaikan).','Menyusun laporan kronologi jika terjadi kejadian khusus/darurat (misal: siswa sakit berat, pelanggaran berat tata tertib, kerusakan fasilitas mendadak/bencana).'],output:['Tersedianya laporan pelaksanaan tugas dan kewajiban wali asrama yang disusun secara sistematis, lengkap, dan tepat waktu sebagai bentuk pertanggungjawaban kepada Kepala Sekolah. Laporan mencakup dokumentasi kegiatan harian, rekapitulasi perkembangan dan kedisiplinan peserta didik, pendampingan serta koordinasi penanganan kesehatan siswa, dan pencatatan kondisi fasilitas asrama. Selain itu, tersusunnya laporan kronologi kejadian khusus maupun keadaan darurat sebagai bahan evaluasi dan tindak lanjut, guna mendukung pelaksanaan pengelolaan dan pembinaan asrama yang tertib, efektif, dan akuntabel.']},
+      {label:'RHK 6',text:'Menyediakan laporan koordinasi dengan koordinator asrama (peserta didik yang diberi tanggung jawab secara berkala) sesuai dengan ketentuan',kegiatan:['Melakukan koordinasi berkala dengan Koordinator Asrama (peserta didik pengurus) terkait kondisi penghuni dan inventaris.','Mengadakan pertemuan berkala (mingguan/dwimingguan) dengan Koordinator Asrama (ketua asrama/ketua kamar dari peserta didik) untuk membicarakan kedisiplinan, kebersihan, dan agenda kegiatan','Menerima laporan/masukan dari koordinator siswa mengenai kendala antar-penghuni dan memberikan bimbingan serta pengarahan kepemimpinan (mentoring).','Mencatat keluhan, usulan, atau temuan pelanggaran yang dilaporkan oleh koordinator siswa untuk segera ditindaklanjuti oleh Wali Asrama.'],output:['Tersedianya laporan koordinasi dengan koordinator asrama yang memuat hasil komunikasi, pemantauan, dan evaluasi terkait kondisi peserta didik, kedisiplinan, kebersihan, serta pengelolaan inventaris asrama. Terlaksananya pertemuan dan koordinasi secara berkala untuk membahas kendala, menerima masukan, serta menindaklanjuti berbagai permasalahan yang terjadi di lingkungan asrama. Selain itu, peserta didik yang diberikan tanggung jawab sebagai pengurus asrama mampu mengembangkan kemampuan kepemimpinan, komunikasi, kerja sama, dan tanggung jawab melalui pendampingan serta arahan dari wali asrama guna mendukung terciptanya lingkungan asrama yang tertib, harmonis, dan kondusif.']},
+      {label:'RHK 7',text:'Melaksanakan tugas-tugas kedinasan lainnya yang diperintahkan oleh atasan',kegiatan:['Membawa dan mendampingi siswa yang sakit ke Puskesmas/Rumah Sakit di luar jam kerja, atau menangani situasi darurat di lingkungan sekolah.','Hadir mewakili Kepala Sekolah/Asrama dalam rapat koordinasi dengan instansi luar (RT/RW lokal, Puskesmas, Komite Sekolah, atau Dinas Pendidikan).','Melaksanakan piket tambahan pada hari libur nasional, libur semester, atau penjagaan khusus keamanan lingkungan sekolah/asrama.','Menjadi panitia pelaksana Penerimaan Peserta Didik Baru (PPDB), Hari Besar Nasional, atau peringatan keagamaan di sekolah','Melaksanakan Upacara Bendera setiap Hari Senin atau Upacara Hari Besar lainnya'],output:['Terlaksananya tugas kedinasan lainnya sesuai arahan dan perintah atasan, meliputi pendampingan peserta didik dalam penanganan kondisi kesehatan maupun situasi darurat, pelaksanaan koordinasi dan komunikasi dengan instansi terkait, serta dukungan terhadap pengamanan dan pengawasan lingkungan sekolah maupun asrama. Selain itu, terlaksananya dukungan terhadap berbagai kegiatan kelembagaan, kepanitiaan kegiatan sekolah, penerimaan peserta didik baru, peringatan hari besar nasional dan keagamaan, serta pelaksanaan upacara bendera secara tertib dan sesuai ketentuan. Seluruh tugas dilaksanakan dengan penuh tanggung jawab, disiplin, dan profesionalisme guna mendukung kelancaran penyelenggaraan pendidikan dan operasional Sekolah Rakyat.']}
+    ]
+  },
+  wali_asuh: {
+    label: 'Wali Asuh',
+    rhk: [
+      {label:'RHK 1',text:'Tersedianya laporan bimbingan dan pengajaran peserta didik Sekolah Rakyat yang sesuai dengan ketentuan.',kegiatan:['Mendampingi dan membimbing peserta didik dalam mengerjakan tugas sekolah.','Memberikan bimbingan belajar tambahan sesuai kebutuhan peserta didik.','Memantau perkembangan akademik dan hasil belajar peserta didik.','Membantu peserta didik memahami materi pelajaran yang belum dikuasai.','Berkoordinasi dengan guru mata pelajaran terkait perkembangan dan kesulitan belajar peserta didik.','Mendokumentasikan hasil bimbingan dan perkembangan belajar peserta didik.'],output:['Tersedianya laporan bimbingan dan pengajaran peserta didik yang memuat pelaksanaan pendampingan belajar, pemberian bimbingan akademik, serta pemantauan perkembangan hasil belajar peserta didik. Peserta didik mampu meningkatkan pemahaman terhadap materi pembelajaran, menyelesaikan tugas sekolah secara mandiri, serta mengembangkan kebiasaan belajar yang teratur dan bertanggung jawab. Selain itu, terlaksananya koordinasi dengan guru mata pelajaran dalam mengidentifikasi dan mengatasi kesulitan belajar peserta didik guna mendukung peningkatan prestasi dan pencapaian hasil belajar secara optimal.']},
+      {label:'RHK 2',text:'Tersedianya laporan kemandirian peserta didik melalui pembinaan dan pendampingan berkelanjutan sesuai dengan ketentuan.',kegiatan:['Membimbing peserta didik dalam merapikan tempat tidur dan menjaga kebersihan kamar.','Melatih peserta didik mengelola perlengkapan pribadi dan kebutuhan sehari-hari.','Membiasakan peserta didik mencuci, merawat, dan menyimpan pakaian secara mandiri.','Membimbing peserta didik mengatur waktu dan jadwal kegiatan harian.','Melatih peserta didik bertanggung jawab terhadap tugas dan kewajiban pribadi.','Memantau perkembangan kemandirian dan tanggung jawab peserta didik.'],output:['Tersedianya laporan pembinaan dan pendampingan kemandirian peserta didik yang memuat perkembangan kemampuan dalam mengelola kebutuhan pribadi dan melaksanakan aktivitas sehari-hari. Peserta didik mampu menjaga kebersihan dan kerapian diri serta lingkungan, merawat perlengkapan pribadi, mengatur waktu, dan melaksanakan tanggung jawab tanpa selalu bergantung pada bantuan orang lain. Selain itu, peserta didik mampu menunjukkan sikap disiplin, tanggung jawab, inisiatif, dan kemandirian dalam menjalankan rutinitas sehari-hari melalui pembinaan dan pendampingan secara berkelanjutan.']},
+      {label:'RHK 3',text:'Tersedianya laporan pendampingan, bimbingan, motivasi, dan pembinaan peserta didik dalam aspek ibadah, belajar, dan aktivitas sehari-hari sesuai dengan ketentuan.',kegiatan:['Mendampingi peserta didik dalam melaksanakan ibadah sesuai agama dan kepercayaan masing-masing.','Memberikan motivasi dan arahan dalam meningkatkan semangat belajar peserta didik.','Melakukan pendampingan dan pembinaan dalam kegiatan harian peserta didik.','Memberikan nasihat dan penguatan karakter terkait sikap, perilaku, dan sopan santun.','Melaksanakan komunikasi dan pendekatan personal untuk mengetahui permasalahan peserta didik.','Mendokumentasikan hasil pendampingan dan perkembangan perilaku peserta didik.'],output:['Tersedianya laporan pendampingan, bimbingan, motivasi, dan pembinaan peserta didik yang mencakup aspek keagamaan, pembelajaran, serta aktivitas sehari-hari. Peserta didik mampu meningkatkan kesadaran dan konsistensi dalam menjalankan ibadah sesuai agama dan kepercayaan masing-masing, memiliki motivasi belajar yang lebih baik, serta menunjukkan perilaku positif dalam kehidupan sehari-hari. Selain itu, peserta didik mampu mengembangkan karakter yang religius, disiplin, santun, bertanggung jawab, dan menghargai sesama melalui pendampingan serta pembinaan secara berkelanjutan.']},
+      {label:'RHK 4',text:'Tersedianya laporan bimbingan spiritual dan emosional, penerapan disiplin, kesehatan, dan kegiatan belajar peserta didik sesuai dengan ketentuan.',kegiatan:['Memberikan bimbingan spiritual dan penguatan nilai-nilai moral kepada peserta didik.','Melakukan pendekatan personal dan pendampingan terhadap kondisi emosional peserta didik.','Membimbing peserta didik dalam menerapkan kedisiplinan dan mematuhi tata tertib.','Memantau kondisi kesehatan, kebersihan diri, dan pola hidup sehat peserta didik.','Memantau kehadiran dan keterlibatan peserta didik dalam kegiatan pembelajaran.','Melakukan pendampingan dan koordinasi dengan pihak terkait apabila ditemukan permasalahan peserta didik.'],output:['Tersedianya laporan bimbingan spiritual dan emosional, penerapan disiplin, kesehatan, serta kegiatan belajar peserta didik yang memuat hasil pemantauan dan pelaksanaan pembinaan secara berkala. Peserta didik mampu mengembangkan nilai-nilai spiritual, mengelola emosi dengan baik, menunjukkan perilaku disiplin, serta mematuhi tata tertib yang berlaku. Peserta didik juga mampu menerapkan pola hidup sehat, menjaga kebersihan diri, dan mengikuti kegiatan pembelajaran secara tertib dan bertanggung jawab. Selain itu, teridentifikasinya permasalahan spiritual, emosional, kesehatan, maupun pembelajaran peserta didik sehingga dapat dilakukan pendampingan dan koordinasi dengan pihak terkait secara tepat.']},
+      {label:'RHK 5',text:'Tersedianya laporan pendampingan peserta didik berkebutuhan khusus sesuai dengan ketentuan.',kegiatan:['Mengidentifikasi kebutuhan dan karakteristik peserta didik berkebutuhan khusus.','Mendampingi peserta didik dalam mengikuti kegiatan pembelajaran dan aktivitas harian.','Membantu peserta didik dalam memenuhi kebutuhan pribadi sesuai tingkat kemandiriannya.','Memberikan bimbingan dan motivasi sesuai kemampuan serta kebutuhan individual peserta didik.','Berkoordinasi dengan guru, tenaga pendidik, dan tenaga ahli terkait perkembangan peserta didik.','Memantau dan mendokumentasikan perkembangan serta kendala yang dialami peserta didik.'],output:['Tersedianya laporan pendampingan peserta didik berkebutuhan khusus yang memuat hasil identifikasi kebutuhan, pelaksanaan pendampingan, perkembangan kemampuan, serta kendala yang dihadapi peserta didik dalam kegiatan pembelajaran dan aktivitas sehari-hari. Peserta didik berkebutuhan khusus memperoleh pendampingan sesuai karakteristik, kemampuan, dan kebutuhan individual sehingga mampu berpartisipasi dalam kegiatan pendidikan dan kehidupan sehari-hari secara optimal. Selain itu, peserta didik mendapatkan dukungan dalam mengembangkan kemampuan komunikasi, interaksi sosial, kemandirian, dan keterampilan sesuai potensinya. Terlaksananya koordinasi dengan guru, tenaga pendidik, serta pihak terkait guna memastikan pendampingan yang tepat, berkelanjutan, dan sesuai kebutuhan peserta didik.']}
+    ]
+  }
+};
+
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const short=(t,n)=>{t=String(t).replace(/\s+/g,' ');return t.length>n?t.slice(0,n-1)+'…':t;};
 function api(fn,...a){return new Promise((ok,no)=>google.script.run.withSuccessHandler(ok).withFailureHandler(e=>no(new Error(e&&e.message?e.message:String(e))))[fn](...a));}
-let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600);}
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800);}
 function grow(el){el.style.height='auto';el.style.height=Math.max(76,el.scrollHeight+2)+'px';}
 function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 const p2=n=>String(n).padStart(2,'0');
 const ymdOf=d=>d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());
-
 function copyText(t){
   try{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0;top:0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(ok){toast('Link disalin ✓');return;}}catch(e){}
-  if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Link disalin ✓'),()=>toast('Salin manual dari kolom link'));}else toast('Salin manual dari kolom link');
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Link disalin ✓'),()=>toast('Salin manual'));}else toast('Salin manual');
 }
-
 function fileToData(file,maxDim,type,q){
   return new Promise((res,rej)=>{
-    const r=new FileReader();
-    r.onerror=rej;
+    const r=new FileReader();r.onerror=rej;
     r.onload=()=>{const img=new Image();img.onerror=rej;
       img.onload=()=>{let w=img.width,h=img.height;const s=Math.min(1,maxDim/Math.max(w,h));w=Math.round(w*s);h=Math.round(h*s);
         const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');
@@ -546,7 +605,6 @@ function fileToData(file,maxDim,type,q){
     r.readAsDataURL(file);
   });
 }
-
 function askConfirm(title,msg,chkLabel,okLabel){
   return new Promise(res=>{
     const m=$('#modal');
@@ -558,102 +616,308 @@ function askConfirm(title,msg,chkLabel,okLabel){
   });
 }
 
-/* ---------- tabs ---------- */
+/* ================================================================
+   TABS
+   ================================================================ */
 function go(tab){
   document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
   document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.id==='tab-'+tab));
   window.scrollTo({top:0,behavior:'smooth'});
-  if(tab==='riwayat')loadRiwayat();
-  if(tab==='setting')renderSetting();
-  if(tab==='profil'){fillProfil();}
-  if(tab==='absen'){absInit();loadAbsen(AB.ym);loadMasuk(MK.ym);}
+  if(tab==='beranda')  loadBeranda();
+  if(tab==='riwayat')  loadRiwayat();
+  if(tab==='setting')  renderSetting();
+  if(tab==='absen'){   absInit();loadAbsen(AB.ym);loadMasuk(MK.ym);}
 }
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
-$('#w-edit').onclick=()=>go('profil');
+$('#w-edit').onclick=()=>{go('setting');switchSettingTab('profil');};
 
-/* ---------- BUAT ---------- */
-function curRhk(){const i=$('#s-rhk').value;return i===''?null:S.settings.rhk[+i];}
-function buildFields(){
-  $('#fields').innerHTML=CATS.map(c=>`<div class="field"><label for="f-${c.key}">${c.label}</label><select id="s-${c.key}"></select><textarea id="f-${c.key}" rows="3" placeholder="Pilih dari daftar atau ketik sendiri…"></textarea>${c.key==='waktu'?'<label class="chk"><input type="checkbox" id="f-auto" checked> Tambahkan hari &amp; tanggal otomatis di bawah waktu</label>':''}</div>`).join('');
-  $('#s-rhk').onchange=e=>{const i=e.target.value;if(i!==''){const t=$('#f-rhk');t.value=S.settings.rhk[+i].text;grow(t);}fillKegiatan(true);};
-  ['kegiatan','output'].forEach(k=>{$('#s-'+k).onchange=e=>{const r=curRhk(),i=e.target.value;if(r&&i!==''){const t=$('#f-'+k);t.value=r[k][+i];grow(t);}};});
-  ['waktu'].forEach(k=>{$('#s-'+k).onchange=e=>{const i=e.target.value;if(i!==''){const t=$('#f-'+k);t.value=S.settings[k][+i];grow(t);}};});
-  CATS.forEach(c=>{$('#f-'+c.key).oninput=e=>grow(e.target);});
-  fillSelects(true);
+/* ================================================================
+   BERANDA
+   ================================================================ */
+const BH={ym:todayStr().slice(0,7)};
+function renderGreeting(){
+  const nama=(S.profil&&S.profil.nama)?S.profil.nama.split(' ')[0]:'Rekan';
+  document.getElementById('g-nama').textContent=nama;
 }
-function setOpts(sel,items,emptyMsg,placeholder){
-  sel.innerHTML=`<option value="">${items.length?placeholder:emptyMsg}</option>`+items.map((t,i)=>`<option value="${i}">${esc(short(t,80))}</option>`).join('');
-}
-function fillKegiatan(auto){
-  [['kegiatan','kegiatan'],['output','output']].forEach(([k,nm])=>{
-    const r=curRhk(),list=r?(r[k]||[]):[],sel=$('#s-'+k),ta=$('#f-'+k);
-    setOpts(sel,list,r?'RHK ini belum punya '+nm+' — atur di Setting':'Pilih Jenis RHK dulu','— Pilih '+nm+' ('+list.length+') —');
-    if(auto){ta.value=list.length?list[0]:'';if(list.length)sel.value='0';}
-    grow(ta);
-  });
-}
-function fillSelects(initial){
-  const L=S.settings,sr=$('#s-rhk'),tr=$('#f-rhk'),prev=sr.value;
-  setOpts(sr,L.rhk.map(r=>r.label+' — '+r.text),'Belum ada RHK — tambahkan di menu Setting','— Pilih RHK ('+L.rhk.length+') —');
-  if(!initial&&prev!==''&&L.rhk[+prev])sr.value=prev;
-  if(initial&&!tr.value&&L.rhk.length){sr.value='0';tr.value=L.rhk[0].text;}
-  grow(tr);
-  fillKegiatan(initial&&sr.value!=='');
-  ['waktu'].forEach(k=>{
-    const sel=$('#s-'+k),ta=$('#f-'+k),list=L[k]||[];
-    setOpts(sel,list,'Belum ada pilihan — tambahkan di menu Setting','— Pilih dari daftar ('+list.length+') —');
-    if(initial&&!ta.value&&list.length){sel.value='0';ta.value=list[0];}
-    grow(ta);
-  });
-}
-function renderWho(){const p=S.profil;$('#w-nama').textContent=p.nama||'(belum diisi)';$('#w-nip').textContent='NIP '+(p.nip||'–');}
+async function loadBeranda(){
+  renderGreeting();
+  const [y,m]=BH.ym.split('-').map(Number);
+  document.getElementById('g-title').textContent=BLN_FULL[m-1]+' '+y;
+  const all=Array.isArray(S.riwayat)?S.riwayat:[];
+  const list=all.filter(x=>String(x.tanggal||'').indexOf(BH.ym)===0);
+  const totalDays=new Date(y,m,0).getDate();
+  const today=new Date();
+  const isCurrent=today.getFullYear()===y&&today.getMonth()+1===m;
+  const passedDays=isCurrent?today.getDate():totalDays;
+  const target=26;
+  const pct=Math.min(100,Math.round(list.length/target*100));
+  document.getElementById('g-stats').innerHTML=`
+    <div class="stat"><b>${list.length}</b><small>SKP dibuat</small></div>
+    <div class="stat"><b>${passedDays}</b><small>Hari berjalan</small></div>
+    <div class="stat"><b>${pct}%</b><small>Progress</small></div>`;
+  document.getElementById('g-count').textContent=`${list.length} dari ${target} hari`;
+  document.getElementById('g-sub').textContent=pct>=100?'🎉 Lengkap! Semua hari sudah terisi.':`Progress ${pct}% — ayo lengkapi SKP hari ini.`;
 
-function renderThumbs(){
-  $('#thumbs').innerHTML=S.photos.map((p,i)=>`<div class="th"><img src="${p.dataUrl}"><button data-i="${i}" aria-label="Hapus">${ic('x')}</button></div>`).join('');
-  $('#thumbs').style.display=S.photos.length?'grid':'none';
-  $('#photo-lbl').textContent=S.photos.length?`Tambah foto (${S.photos.length}/6)`:'Tambah foto';
-  $('#thumbs').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.photos.splice(+b.dataset.i,1);renderThumbs();});
-}
-$('#photo-in').onchange=async e=>{
-  for(const f of [...e.target.files]){
-    if(S.photos.length>=6){toast('Maksimal 6 foto');break;}
-    try{S.photos.push(await fileToData(f,1100,'image/jpeg',0.8));}catch(x){toast('Gagal membaca foto');}
+  // Indikator kelengkapan RHK
+  const rhkList=(S.settings&&S.settings.rhk)||[];
+  const rhkCard=document.getElementById('g-rhk-card');
+  const rhkCheckEl=document.getElementById('g-rhk-check');
+  if(rhkCard&&rhkCheckEl){
+    if(!rhkList.length){rhkCard.style.display='none';}
+    else{
+      rhkCard.style.display='';
+      const usedLabels=new Set();
+      list.forEach(x=>{
+        if(x.fullData&&Array.isArray(x.fullData.reports)){
+          x.fullData.reports.forEach(rep=>{if(rep.rhkLabel)usedLabels.add(rep.rhkLabel);});
+        } else {
+          const info=rhkInfo(x);
+          if(info.label) usedLabels.add(info.label);
+        }
+      });
+      const missing=rhkList.filter(r=>!usedLabels.has(r.label));
+      const allDone=missing.length===0;
+      rhkCheckEl.innerHTML=`
+        <div style="padding:12px;border-radius:12px;background:${allDone?'#e0f3f0':'#fef3c7'};border:1.5px solid ${allDone?'#a7e3da':'#fcd34d'}">
+          <div style="font-weight:700;font-size:13px;margin-bottom:8px;color:${allDone?'#0b5c56':'#92400e'}">
+            ${allDone?'✅ Semua RHK sudah terpenuhi bulan ini':'⚠️ Beberapa RHK belum terisi bulan ini'}
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${rhkList.map(r=>{
+              const isUsed=usedLabels.has(r.label);
+              return `<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:${isUsed?'#0f766e':'#fee2e2'};color:${isUsed?'#fff':'#dc2626'}">${isUsed?'✓':'✗'} ${esc(r.label)}</span>`;
+            }).join('')}
+          </div>
+          ${missing.length?`<div style="font-size:12px;color:#92400e;margin-top:10px">RHK belum ada laporan: ${missing.map(r=>esc(r.label)).join(', ')}</div>`:''}
+        </div>`;
+    }
   }
-  e.target.value='';renderThumbs();
-};
 
-function collect(){
-  const d={tanggal:$('#f-tanggal').value,tanggalSurat:$('#f-tanggal').value,tempat:$('#f-tempat').value.trim(),
-    autoTanggal:$('#f-auto').checked,sertakanTtd:$('#f-ttd').checked,fotos:S.photos.map(p=>({b64:p.b64,mime:p.mime}))};
-  CATS.forEach(c=>d[c.key]=$('#f-'+c.key).value.trim());
-  const rr=curRhk();d.rhkLabel=rr?rr.label:'';
-  if(!d.tanggal){toast('Tanggal pelaksanaan belum diisi');return null;}
-  for(const c of CATS){if(!d[c.key]){toast(`"${c.label}" belum diisi`);return null;}}
+  // Bar chart
+  const weeks={};
+  list.forEach(x=>{
+    const d=new Date(x.tanggal+'T00:00:00');
+    const wk=Math.ceil(d.getDate()/7);
+    weeks[wk]=(weeks[wk]||0)+1;
+  });
+  const labels=['M1','M2','M3','M4','M5'];
+  const data=labels.map((_,i)=>weeks[i+1]||0);
+  drawBarChart('g-chart',labels,data);
+
+  // Donut
+  const catCnt={};
+  list.forEach(x=>{const r=rhkInfo(x);const key=r.label||'Lainnya';catCnt[key]=(catCnt[key]||0)+1;});
+  drawDonut('g-donut','g-legend',catCnt);
+
+  const rc=document.getElementById('g-r-count');
+  if(rc) rc.textContent=`${all.length} laporan`;
+}
+function drawBarChart(canvasId,labels,data){
+  const cv=document.getElementById(canvasId);if(!cv)return;
+  const dpr=window.devicePixelRatio||1;
+  const w=cv.clientWidth||300,h=cv.clientHeight||180;
+  cv.width=w*dpr;cv.height=h*dpr;
+  const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+  const pad=24,gap=(w-pad*2)/labels.length,bw=gap*0.6;
+  const max=Math.max(1,...data),barH=h-pad*2;
+  ctx.strokeStyle='#e1e9e7';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=pad+barH*i/4;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke();}
+  data.forEach((v,i)=>{
+    const bh=(v/max)*barH;
+    const x=pad+gap*i+(gap-bw)/2;
+    const y=h-pad-bh;
+    const grad=ctx.createLinearGradient(0,y,0,h-pad);
+    grad.addColorStop(0,'#14958a');grad.addColorStop(1,'#0f766e');
+    ctx.fillStyle=grad;
+    if(bh>0){ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,bw,bh,6);else ctx.rect(x,y,bw,bh);ctx.fill();}
+    ctx.fillStyle='#5d6f6b';ctx.font='11px Inter,sans-serif';ctx.textAlign='center';
+    ctx.fillText(labels[i],x+bw/2,h-6);
+    if(v>0){ctx.fillStyle='#0b5c56';ctx.font='bold 11px Inter,sans-serif';ctx.fillText(v,x+bw/2,y-4);}
+  });
+}
+function drawDonut(canvasId,legendId,dataObj){
+  const cv=document.getElementById(canvasId);const lg=document.getElementById(legendId);
+  if(!cv||!lg)return;
+  const keys=Object.keys(dataObj);const vals=keys.map(k=>dataObj[k]);
+  const total=vals.reduce((a,b)=>a+b,0)||1;
+  const colors=['#0f766e','#2563eb','#7c3aed','#f59e0b','#dc2626','#0d9488','#84cc16'];
+  const dpr=window.devicePixelRatio||1;
+  cv.width=140*dpr;cv.height=140*dpr;cv.style.width='140px';cv.style.height='140px';
+  const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,140,140);
+  const cx=70,cy=70,r=60,ir=38;let start=-Math.PI/2;
+  if(!keys.length){ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.arc(cx,cy,ir,0,Math.PI*2,true);ctx.fillStyle='#e1e9e7';ctx.fill();}
+  else{vals.forEach((v,i)=>{
+    const ang=(v/total)*Math.PI*2;
+    ctx.beginPath();ctx.arc(cx,cy,r,start,start+ang);ctx.arc(cx,cy,ir,start+ang,start,true);ctx.closePath();
+    ctx.fillStyle=colors[i%colors.length];ctx.fill();start+=ang;
+  });}
+  ctx.fillStyle='#0f1f1c';ctx.textAlign='center';ctx.font='bold 18px Inter,sans-serif';
+  ctx.fillText(keys.length?total:'0',cx,cy+2);
+  ctx.font='9px Inter,sans-serif';ctx.fillStyle='#5d6f6b';ctx.fillText('SKP',cx,cy+16);
+  lg.innerHTML=keys.length?keys.map((k,i)=>`<div><span class="dot" style="background:${colors[i%colors.length]}"></span>${esc(k)} <b>${dataObj[k]}</b></div>`).join(''):'<span style="color:var(--mute)">Belum ada data</span>';
+}
+document.getElementById('g-prev').onclick=()=>shiftBeranda(-1);
+document.getElementById('g-next').onclick=()=>shiftBeranda(1);
+function shiftBeranda(d){
+  const [y,m]=BH.ym.split('-').map(Number);
+  const dt=new Date(y,m-1+d,1);
+  BH.ym=dt.getFullYear()+'-'+p2(dt.getMonth()+1);
+  loadBeranda();
+}
+document.querySelectorAll('.quick[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+/* ================================================================
+   EXPORT MODAL
+   ================================================================ */
+document.getElementById('g-export-all').onclick=exportModal;
+function exportModal(){
+  const m=document.getElementById('modal');
+  m.innerHTML=`
+    <div class="box" style="max-width:440px">
+      <h3>Export &amp; Backup</h3>
+      <p>Pilih format yang akan disimpan.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin:12px 0">
+        <button class="btn ghost block" id="ex-backup">💾 Backup data ke file JSON</button>
+      </div>
+      <div class="row" style="justify-content:flex-end"><button class="btn ghost sm" id="ex-cancel">Batal</button></div>
+    </div>`;
+  m.classList.add('open');
+  document.getElementById('ex-cancel').onclick=()=>{m.classList.remove('open');m.innerHTML='';};
+  document.getElementById('ex-backup').onclick=async()=>{
+    m.classList.remove('open');m.innerHTML='';
+    try{
+      const data={version:1,exportedAt:new Date().toISOString(),profil:S.profil,settings:S.settings,riwayat:S.riwayat};
+      const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');a.href=url;a.download='skp_backup_'+todayStr()+'.json';a.click();
+      setTimeout(()=>URL.revokeObjectURL(url),5000);
+      toast('Backup tersimpan ✓');
+    }catch(e){toast('Gagal: '+e.message);}
+  };
+}
+
+/* ================================================================
+   BUAT SKP — MULTI LAPORAN
+   ================================================================ */
+function newReport(){return {rhkLabel:'',rhk:'',waktu:'',kegiatan:'',output:'',fotos:[]};}
+S.reports=[newReport()];
+
+function renderReports(){
+  const L=$('#reports');
+  L.innerHTML=S.reports.map((r,idx)=>{
+    const rhkOptions=(S.settings.rhk||[]).map((x,i)=>`<option value="${i}"${r._rhkSel==i?' selected':''}>${esc(short(x.label+' — '+x.text,80))}</option>`).join('');
+    const waktuOptions=(S.settings.waktu||[]).map((x,i)=>`<option value="${i}"${r._waktuSel==i?' selected':''}>${esc(short(x,80))}</option>`).join('');
+    const kegOptions=r._rhkSel!=null&&S.settings.rhk[r._rhkSel]?S.settings.rhk[r._rhkSel].kegiatan.map((x,i)=>`<option value="${i}"${r._kegSel==i?' selected':''}>${esc(short(x,80))}</option>`).join(''):'';
+    const outOptions=r._rhkSel!=null&&S.settings.rhk[r._rhkSel]?(S.settings.rhk[r._rhkSel].output||[]).map((x,i)=>`<option value="${i}"${r._outSel==i?' selected':''}>${esc(short(x,80))}</option>`).join(''):'';
+    return `
+      <div class="report-card" data-idx="${idx}">
+        <div class="rc-head">
+          <div class="rc-num">${idx+1}</div>
+          <div class="rc-title">Laporan ${idx+1}</div>
+          <button class="rc-del" data-del-report="${idx}" ${S.reports.length<=1?'disabled':''} title="Hapus laporan">${ic('trash')}</button>
+        </div>
+        <div class="field">
+          <label>Jenis RHK</label>
+          <select data-f="rhkSel" data-idx="${idx}"><option value="">${(S.settings.rhk||[]).length?'— Pilih RHK —':'Belum ada RHK — atur di Setting'}</option>${rhkOptions}</select>
+          <textarea data-f="rhk" data-idx="${idx}" placeholder="Kalimat RHK">${esc(r.rhk)}</textarea>
+        </div>
+        <div class="field">
+          <label>Waktu Pelaksanaan</label>
+          <select data-f="waktuSel" data-idx="${idx}"><option value="">${(S.settings.waktu||[]).length?'— Pilih dari daftar —':'Belum ada pilihan'}</option>${waktuOptions}</select>
+          <textarea data-f="waktu" data-idx="${idx}" placeholder="Waktu pelaksanaan">${esc(r.waktu)}</textarea>
+          <label class="chk"><input type="checkbox" data-f="autoTgl" data-idx="${idx}" ${r._autoTgl!==false?'checked':''}> Tambahkan hari &amp; tanggal otomatis</label>
+        </div>
+        <div class="field">
+          <label>Jenis Kegiatan</label>
+          <select data-f="kegSel" data-idx="${idx}"><option value="">${r._rhkSel!=null?'— Pilih kegiatan —':'Pilih RHK dulu'}</option>${kegOptions}</select>
+          <textarea data-f="kegiatan" data-idx="${idx}" placeholder="Jenis kegiatan">${esc(r.kegiatan)}</textarea>
+        </div>
+        <div class="field">
+          <label>Output yang dihasilkan</label>
+          <select data-f="outSel" data-idx="${idx}"><option value="">${r._rhkSel!=null?'— Pilih output —':'Pilih RHK dulu'}</option>${outOptions}</select>
+          <textarea data-f="output" data-idx="${idx}" placeholder="Output">${esc(r.output)}</textarea>
+        </div>
+        <div class="field">
+          <label>Dokumentasi (maks 6)</label>
+          <div class="thumbs" data-thumbs="${idx}">${r.fotos.map((f,j)=>`<div class="th"><img src="${f.dataUrl}"><button data-del-foto="${idx}:${j}" type="button">${ic('x')}</button></div>`).join('')}</div>
+          <label class="btn ghost sm" style="display:inline-flex;margin:0;cursor:pointer"><i data-ic="image"></i><span>Tambah foto (${r.fotos.length}/6)</span><input type="file" accept="image/*" multiple hidden data-add-foto="${idx}"></label>
+        </div>
+      </div>`;
+  }).join('');
+  hydrate(L);
+  L.querySelectorAll('[data-del-report]').forEach(b=>b.onclick=()=>{
+    if(S.reports.length<=1)return toast('Minimal 1 laporan');
+    S.reports.splice(+b.dataset.delReport,1);renderReports();
+  });
+  L.querySelectorAll('select[data-f]').forEach(sel=>sel.onchange=()=>{
+    const idx=+sel.dataset.idx,f=sel.dataset.f;const r=S.reports[idx];
+    if(f==='rhkSel'){const i=sel.value;r._rhkSel=i===''?null:+i;r._kegSel=null;r._outSel=null;if(i!==''){r.rhkLabel=S.settings.rhk[+i].label;r.rhk=S.settings.rhk[+i].text;}renderReports();}
+    else if(f==='waktuSel'){const i=sel.value;r._waktuSel=i===''?null:+i;if(i!=='')r.waktu=S.settings.waktu[+i];renderReports();}
+    else if(f==='kegSel'){const i=sel.value;r._kegSel=i===''?null:+i;if(i!==''&&r._rhkSel!=null)r.kegiatan=S.settings.rhk[r._rhkSel].kegiatan[+i];renderReports();}
+    else if(f==='outSel'){const i=sel.value;r._outSel=i===''?null:+i;if(i!==''&&r._rhkSel!=null)r.output=S.settings.rhk[r._rhkSel].output[+i];renderReports();}
+  });
+  L.querySelectorAll('textarea[data-f]').forEach(ta=>{grow(ta);ta.oninput=()=>{S.reports[+ta.dataset.idx][ta.dataset.f]=ta.value;grow(ta);};});
+  L.querySelectorAll('input[type=checkbox][data-f="autoTgl"]').forEach(cb=>cb.onchange=()=>{S.reports[+cb.dataset.idx]._autoTgl=cb.checked;});
+  L.querySelectorAll('[data-del-foto]').forEach(b=>b.onclick=e=>{
+    e.preventDefault();const[i,j]=b.dataset.delFoto.split(':').map(Number);
+    S.reports[i].fotos.splice(j,1);renderReports();
+  });
+  L.querySelectorAll('[data-add-foto]').forEach(inp=>inp.onchange=async e=>{
+    const idx=+inp.dataset.addFoto;const r=S.reports[idx];
+    for(const f of [...e.target.files]){
+      if(r.fotos.length>=6){toast('Maksimal 6 foto');break;}
+      try{r.fotos.push(await fileToData(f,1100,'image/jpeg',0.8));}catch(x){toast('Gagal baca foto');}
+    }
+    e.target.value='';renderReports();
+  });
+}
+function addReport(){S.reports.push(newReport());renderReports();setTimeout(()=>{const l=$('#reports').querySelectorAll('.report-card');if(l.length)l[l.length-1].scrollIntoView({behavior:'smooth',block:'start'});},50);}
+$('#btn-add-report').onclick=addReport;
+function renderWho(){const p=S.profil;$('#w-nama').textContent=p.nama||'(belum diisi)';$('#w-nip').textContent='NIP '+(p.nip||'–');}
+function collectSession(){
+  const d={
+    tanggal:$('#f-tanggal').value,tanggalSurat:$('#f-tanggal').value,
+    tempat:$('#f-tempat').value.trim(),sertakanTtd:$('#f-ttd').checked,
+    reports:S.reports.map(r=>({rhkLabel:r.rhkLabel,rhk:r.rhk,waktu:r.waktu,kegiatan:r.kegiatan,output:r.output,autoTanggal:r._autoTgl!==false,fotos:r.fotos.map(p=>({dataUrl:p.dataUrl,b64:p.b64,mime:p.mime}))}))
+  };
+  if(!d.tanggal){toast('Tanggal belum diisi');return null;}
+  for(let i=0;i<d.reports.length;i++){
+    const r=d.reports[i];
+    if(!r.rhk){toast(`Laporan ${i+1}: Jenis RHK belum diisi`);return null;}
+    if(!r.waktu){toast(`Laporan ${i+1}: Waktu belum diisi`);return null;}
+    if(!r.kegiatan){toast(`Laporan ${i+1}: Jenis Kegiatan belum diisi`);return null;}
+    if(!r.output){toast(`Laporan ${i+1}: Output belum diisi`);return null;}
+  }
   return d;
 }
 async function saveSkp(d){
   if(!d)return;
-  const b=$('#btn-gen');b.disabled=true;b.innerHTML='<div class="spin"></div><span>Membuat PDF… (±10–30 detik)</span>';
+  const b=$('#btn-gen');b.disabled=true;b.innerHTML='<div class="spin"></div><span>Membuat PDF…</span>';
   $('#result').style.display='none';
   try{
-    const r=await api('generateSkp',d);
-    $('#r-name').textContent=r.name+(r.replaced?' · menggantikan file sebelumnya di tanggal ini (dipindah ke sampah Drive)':'');$('#r-url').value=r.url;$('#r-open').href=r.url;
+    const r=await api('generateSkpMulti',d);
+    $('#r-name').textContent=r.name+(r.replaced?' · menggantikan file sebelumnya':'');
+    $('#r-url').value=r.url;$('#r-open').href=r.url;
     $('#result').style.display='block';
     setTimeout(()=>$('#result').scrollIntoView({behavior:'smooth',block:'center'}),100);
-    toast(r.replaced?'PDF diperbarui — file lama diganti ✓':'PDF tersimpan di Google Drive ✓');
-    loadRiwayat();
+    toast(r.replaced?'PDF diperbarui ✓':'PDF tersimpan di Google Drive ✓');
+    loadRiwayat();loadBeranda();
   }catch(e){toast('Gagal: '+e.message);}
   finally{b.disabled=false;b.innerHTML=ic('file')+'<span>Buat PDF &amp; Simpan</span>';}
-};
-$('#btn-gen').onclick=()=>saveSkp(collect());
+}
+$('#btn-gen').onclick=()=>saveSkp(collectSession());
 $('#r-copy').onclick=()=>copyText($('#r-url').value);
 $('#r-url').onclick=e=>e.target.select();
 
-/* ---------- PRATINJAU ---------- */
+/* ================================================================
+   PRATINJAU
+   ================================================================ */
 const HARI=['Minggu','Senin','Selasa','Rabu','Kamis','Jum’at','Sabtu'];
 const BULAN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-const tglIndo=s=>{const [y,m,d]=s.split('-').map(Number);return d+' '+BULAN[m-1]+' '+y;};
-const hariTgl=s=>{const [y,m,d]=s.split('-').map(Number);return HARI[new Date(y,m-1,d).getDay()]+', '+tglIndo(s);};
+const tglIndo=s=>{const[y,m,d]=s.split('-').map(Number);return d+' '+BULAN[m-1]+' '+y;};
+const hariTgl=s=>{const[y,m,d]=s.split('-').map(Number);return HARI[new Date(y,m-1,d).getDay()]+', '+tglIndo(s);};
 const pre=t=>esc(t).replace(/\r?\n/g,'<br>');
 function sigHtml(d){
   const p=S.profil,tmp=(d.tempat||p.tempat||'').trim();
@@ -663,20 +927,28 @@ function previewHtml(d){
   const p=S.profil;
   const prof=[['Nama',p.nama],['NIP',p.nip],['Pangkat/Gol. Ruang',p.pangkat],['Jabatan',p.jabatan],['Unit Kerja',p.unit],['Atasan',p.atasan]];
   const inner=prof.map(r=>`<tr><td style="width:105px">${esc(r[0])}</td><td style="width:12px">:</td><td>${pre(r[1])}</td></tr>`).join('');
-  let waktu=d.waktu;if(d.autoTanggal)waktu+='\n'+hariTgl(d.tanggal);
-  const rows=[['Jenis RHK',d.rhk],['Waktu Pelaksanaan',waktu],['Jenis Kegiatan',d.kegiatan],['Output yang di hasilkan',d.output]]
-    .map((r,i)=>`<tr><td style="width:120px">${esc(r[0])}</td><td style="width:14px">:</td><td>${i===0&&d.rhkLabel?`<b>${esc(d.rhkLabel)}:</b> `:''}${pre(r[1])}</td></tr>`).join('');
-  let html=`<div class="pg"><table><tr><td class="lg" style="width:120px">${p.logoPreview?`<img src="${p.logoPreview}">`:''}</td><td class="nb"><table>${inner}</table></td></tr></table><div style="height:14px"></div><table>${rows}</table>`;
-  if(!S.photos.length)html+=sigHtml(d);
-  html+='</div>';
-  if(S.photos.length){
-    let g='';
-    for(let i=0;i<S.photos.length;i+=2){
-      g+='<tr>'+[0,1].map(k=>`<td style="width:50%">${S.photos[i+k]?`<img src="${S.photos[i+k].dataUrl}">`:''}</td>`).join('')+'</tr>';
+  let body='';
+  d.reports.forEach((r,i)=>{
+    let waktu=r.waktu;
+    if(r.autoTanggal)waktu+='\n'+hariTgl(d.tanggal);
+    const rows=[['Jenis RHK',r.rhk],['Waktu Pelaksanaan',waktu],['Jenis Kegiatan',r.kegiatan],['Output yang di hasilkan',r.output]]
+      .map(([k,v])=>`<tr><td style="width:120px">${esc(k)}</td><td style="width:14px">:</td><td>${k==='Jenis RHK'&&r.rhkLabel?`<b>${esc(r.rhkLabel)}:</b> `:''}${pre(v)}</td></tr>`).join('');
+    body+=`<div style="font-weight:700;margin:14px 0 6px;font-size:11px">Laporan ${i+1}</div>`;
+    body+=`<table>${rows}</table>`;
+    if(r.fotos&&r.fotos.length){
+      let g='';
+      for(let k=0;k<r.fotos.length;k+=2){
+        const f1=r.fotos[k],f2=r.fotos[k+1];
+        const s1=f1?(f1.dataUrl||('data:'+(f1.mime||'image/jpeg')+';base64,'+f1.b64)):'';
+        const s2=f2?(f2.dataUrl||('data:'+(f2.mime||'image/jpeg')+';base64,'+f2.b64)):'';
+        g+=`<tr><td class="photo-cell">${s1?`<img src="${s1}">`:''}</td><td class="photo-cell">${s2?`<img src="${s2}">`:''}</td></tr>`;
+      }
+      body+=`<div style="font-weight:700;margin:8px 0 4px;font-size:10px">Dokumentasi:</div><table>${g}</table>`;
     }
-    html+=`<div class="pg"><table><tr><td style="width:120px">Dokumentasi</td><td style="width:14px">:</td><td class="nb"><table class="ph">${g}</table></td></tr></table>${sigHtml(d)}</div>`;
-  }
-  return html;
+  });
+  return `<div class="pg">
+    <table><tr><td class="lg" style="width:120px">${p.logoPreview?`<img src="${p.logoPreview}">`:''}</td><td class="nb"><table>${inner}</table></td></tr></table>
+    <div style="height:14px"></div>${body}${sigHtml(d)}</div>`;
 }
 function fitPv(){
   const box=$('#pv-box'),inner=$('#pv-inner');
@@ -686,20 +958,22 @@ function fitPv(){
   $('#pv-sizer').style.height=(inner.offsetHeight*s)+'px';
 }
 function openPv(){
-  const d=collect();if(!d)return;
+  const d=collectSession();if(!d)return;
   $('#pv-inner').innerHTML=previewHtml(d);
   $('#pv').classList.add('open');document.body.style.overflow='hidden';
   fitPv();setTimeout(fitPv,150);
-  $('#pv-inner').querySelectorAll('img').forEach(i=>i.onload=fitPv);
+  $('#pv-inner').querySelectorAll('img').forEach(i=>{i.onload=fitPv;i.onerror=()=>console.warn('img fail');});
   $('#pv-box').scrollTop=0;
 }
 function closePv(){$('#pv').classList.remove('open');document.body.style.overflow='';}
 $('#btn-prev').onclick=openPv;
 $('#pv-x').onclick=closePv;$('#pv-edit').onclick=closePv;
-$('#pv-save').onclick=()=>{const d=collect();closePv();saveSkp(d);};
+$('#pv-save').onclick=()=>{const d=collectSession();closePv();saveSkp(d);};
 window.addEventListener('resize',()=>{if($('#pv').classList.contains('open'))fitPv();});
 
-/* ---------- RIWAYAT (per bulan) ---------- */
+/* ================================================================
+   RIWAYAT
+   ================================================================ */
 const RH={ym:todayStr().slice(0,7),loaded:false};
 async function loadRiwayat(force){
   if(!force&&S.riwayat.length&&RH.loaded){renderRiwayat();return;}
@@ -708,11 +982,10 @@ async function loadRiwayat(force){
   try{
     const raw=await api('getRiwayat');
     const r=typeof raw==='string'?JSON.parse(raw):raw;
-    if(!r)throw new Error('Server tidak mengembalikan data. Pastikan deployment sudah "Versi baru".');
+    if(!r)throw new Error('Server tidak mengembalikan data.');
     if(r.error)throw new Error(r.error);
     S.riwayat=Array.isArray(r)?r:[];
-    RH.loaded=true;
-    renderRiwayat();
+    RH.loaded=true;renderRiwayat();
   }catch(e){
     toast('Gagal memuat riwayat');
     if(S.riwayat&&S.riwayat.length){renderRiwayat();return;}
@@ -725,8 +998,12 @@ function rhkInfo(x){
   const i=text.indexOf(' · ');
   if(i>0&&i<=24){label=text.slice(0,i);text=text.slice(i+3);}
   else{
-    const hit=((S.settings&&S.settings.rhk)||[]).find(r=>r.text&&(r.text.slice(0,160)===text||text.indexOf(r.text.slice(0,80))===0));
-    if(hit)label=hit.label;
+    const mm=text.match(/Laporan\s+\d+\s*:\s*([^|]+?)(?:\s*\||$)/);
+    if(mm&&mm[1].trim()){label=mm[1].trim();}
+    else{
+      const hit=((S.settings&&S.settings.rhk)||[]).find(r=>r.text&&(r.text.slice(0,160)===text||text.indexOf(r.text.slice(0,80))===0));
+      if(hit)label=hit.label;
+    }
   }
   return {label,text};
 }
@@ -745,9 +1022,9 @@ function renderRiwayat(){
     return;
   }
   $('#h-list').innerHTML=list.map(x=>{
-    const [yy,mm,dd]=String(x.tanggal||'').split('-');
+    const[yy,mm,dd]=String(x.tanggal||'').split('-');
     return `<div class="hist"><div class="date"><b>${+dd}</b><span>${BLN[+mm-1]||''} ${yy||''}</span></div>
-      <div class="info"><strong>Laporan SKP Tanggal ${esc(/^\d{4}-\d{2}-\d{2}$/.test(x.tanggal)?tglIndo(x.tanggal):x.label)}</strong><small>${(()=>{const r=rhkInfo(x);return (r.label?`<b class="rn">${esc(r.label)}</b>`:'')+esc(r.text);})()}</small><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.url)}</a></div>
+      <div class="info"><strong>Laporan SKP ${esc(/^\d{4}-\d{2}-\d{2}$/.test(x.tanggal)?tglIndo(x.tanggal):x.label)}${x.reportCount>1?' ('+x.reportCount+' lap.)':''}</strong><small>${(()=>{const r=rhkInfo(x);return (r.label?`<b class="rn">${esc(r.label)}</b>`:'')+esc(r.text);})()}</small><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.url)}</a></div>
       <div class="acts"><button class="ib" data-copy="${esc(x.url)}" title="Salin link">${ic('copy')}</button>
       <a class="ib" href="${esc(x.url)}" target="_blank" rel="noopener" title="Buka">${ic('ext')}</a>
       <button class="ib dng" data-del="${esc(x.id)}" title="Hapus">${ic('trash')}</button></div></div>`;}).join('');
@@ -755,7 +1032,7 @@ function renderRiwayat(){
   $('#h-list').querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{
     const r=await askConfirm('Hapus dari riwayat?','Catatan riwayat ini akan dihapus.','Pindahkan juga file PDF ke tempat sampah Drive','Hapus');
     if(!r.ok)return;
-    try{await api('deleteRiwayat',b.dataset.del,r.chk);S.riwayat=S.riwayat.filter(x=>x.id!==b.dataset.del);renderRiwayat();toast('Dihapus');}catch(e){toast('Gagal: '+e.message);}
+    try{await api('deleteRiwayat',b.dataset.del,r.chk);S.riwayat=S.riwayat.filter(x=>x.id!==b.dataset.del);renderRiwayat();loadBeranda();toast('Dihapus');}catch(e){toast('Gagal: '+e.message);}
   });
 }
 function shiftHMonth(delta){
@@ -769,91 +1046,157 @@ $('#h-next').onclick=()=>shiftHMonth(1);
 $('#h-today').onclick=()=>{const t=todayStr();RH.ym=t.slice(0,7);renderRiwayat();};
 $('#h-ref').onclick=()=>{RH.loaded=false;loadRiwayat(true);};
 
-/* ---------- SETTING ---------- */
-const SCATS=[{key:'rhk',label:'Jenis RHK'},{key:'waktu',label:'Waktu'}];
-function renderSetting(){
-  if(!SCATS.some(c=>c.key===S.cat))S.cat='rhk';
-  $('#seg').innerHTML=SCATS.map(c=>`<button data-c="${c.key}" class="${c.key===S.cat?'on':''}">${c.label}</button>`).join('');
-  $('#seg').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.cat=b.dataset.c;renderSetting();});
-  const L=$('#s-list'),list=S.settings[S.cat];
-  if(S.cat==='rhk'){
-    L.innerHTML=(list.length?'':'<div class="empty">Belum ada RHK. Tekan “Tambah RHK”.</div>')+list.map((r,i)=>`
-      <div class="rhk-card">
-        <div class="rhk-h"><input type="text" data-f="label" data-i="${i}" value="${esc(r.label)}" placeholder="RHK ${i+1}" aria-label="Label RHK"><span class="hint">Label hanya penanda, tidak tampil di PDF</span><button class="ib dng" data-d="${i}" title="Hapus RHK">${ic('trash')}</button></div>
-        <label>Kalimat RHK (tampil di laporan)</label>
-        <textarea data-f="text" data-i="${i}">${esc(r.text)}</textarea>
-        <label style="margin-top:12px">Jenis kegiatan untuk RHK ini</label>
-        ${r.kegiatan.map((k,j)=>`<div class="sitem"><textarea data-f="keg" data-i="${i}" data-j="${j}">${esc(k)}</textarea><button class="ib dng" data-dk="${i}:${j}" title="Hapus kegiatan">${ic('trash')}</button></div>`).join('')}
-        <button class="btn ghost sm" data-ak="${i}">${ic("plus")}Tambah kegiatan</button>
-        <label style="margin-top:14px">Output yang dihasilkan untuk RHK ini</label>
-        ${(r.output||[]).map((k,j)=>`<div class="sitem"><textarea data-f="out" data-i="${i}" data-j="${j}">${esc(k)}</textarea><button class="ib dng" data-do="${i}:${j}" title="Hapus output">${ic('trash')}</button></div>`).join('')}
-        <button class="btn ghost sm" data-ao="${i}">${ic("plus")}Tambah output</button>
-      </div>`).join('');
-    L.querySelectorAll('[data-f]').forEach(el=>{
-      if(el.tagName==='TEXTAREA')grow(el);
-      el.oninput=()=>{
-        const r=S.settings.rhk[+el.dataset.i],f=el.dataset.f;
-        if(f==='label')r.label=el.value;else if(f==='text')r.text=el.value;else if(f==='out')r.output[+el.dataset.j]=el.value;else r.kegiatan[+el.dataset.j]=el.value;
-        if(el.tagName==='TEXTAREA')grow(el);
-      };
-    });
-    L.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{S.settings.rhk.splice(+b.dataset.d,1);renderSetting();});
-    L.querySelectorAll('[data-dk]').forEach(b=>b.onclick=()=>{const [i,j]=b.dataset.dk.split(':').map(Number);S.settings.rhk[i].kegiatan.splice(j,1);renderSetting();});
-    L.querySelectorAll('[data-ak]').forEach(b=>b.onclick=()=>{const r=S.settings.rhk[+b.dataset.ak];r.kegiatan.push('');renderSetting();const t=L.querySelectorAll(`[data-f="keg"][data-i="${b.dataset.ak}"]`);if(t.length)t[t.length-1].focus();});
-    L.querySelectorAll('[data-do]').forEach(b=>b.onclick=()=>{const [i,j]=b.dataset.do.split(':').map(Number);S.settings.rhk[i].output.splice(j,1);renderSetting();});
-    L.querySelectorAll('[data-ao]').forEach(b=>b.onclick=()=>{const r=S.settings.rhk[+b.dataset.ao];r.output=r.output||[];r.output.push('');renderSetting();const t=L.querySelectorAll(`[data-f="out"][data-i="${b.dataset.ao}"]`);if(t.length)t[t.length-1].focus();});
-    $('#s-add').lastChild.textContent='Tambah RHK';
-  }else{
-    L.innerHTML=list.length?list.map((t,i)=>`<div class="sitem"><textarea data-i="${i}">${esc(t)}</textarea><button class="ib dng" data-d="${i}" title="Hapus">${ic('trash')}</button></div>`).join(''):'<div class="empty">Belum ada kalimat. Tekan “Tambah kalimat”.</div>';
-    L.querySelectorAll('textarea').forEach(t=>{grow(t);t.oninput=()=>{S.settings[S.cat][+t.dataset.i]=t.value;grow(t);};});
-    L.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{S.settings[S.cat].splice(+b.dataset.d,1);renderSetting();});
-    $('#s-add').lastChild.textContent='Tambah kalimat';
-  }
+/* ================================================================
+   SETTING
+   ================================================================ */
+function switchSettingTab(tab){
+  document.querySelectorAll('#st-tabs button').forEach(b=>b.classList.toggle('on',b.dataset.s===tab));
+  document.querySelectorAll('#tab-setting .jpanel').forEach(p=>p.classList.toggle('on',p.id==='sp-'+tab));
+  if(tab==='profil')fillProfil();
 }
-$('#s-add').onclick=()=>{
-  if(S.cat==='rhk'){const n=S.settings.rhk.length+1;S.settings.rhk.push({label:'RHK '+n,text:'',kegiatan:[''],output:['']});renderSetting();const t=$('#s-list').querySelectorAll('[data-f="text"]');if(t.length)t[t.length-1].focus();return;}
-  S.settings[S.cat].push('');renderSetting();const t=$('#s-list').querySelectorAll('textarea');if(t.length)t[t.length-1].focus();
+document.querySelectorAll('#st-tabs button').forEach(b=>b.onclick=()=>switchSettingTab(b.dataset.s));
+function renderSetting(){renderRHKList();renderWaktuList();}
+function renderRHKList(){
+  const L=$('#s-list-rhk');const list=S.settings.rhk;
+  L.innerHTML=(list.length?'':'<div class="empty">Belum ada RHK. Tekan “Tambah RHK”.</div>')+list.map((r,i)=>`
+    <div class="rhk-card">
+      <div class="rhk-h"><input type="text" data-f="label" data-i="${i}" value="${esc(r.label)}" placeholder="RHK ${i+1}"><span class="hint">Label hanya penanda</span><button class="ib dng" data-d="${i}" title="Hapus RHK">${ic('trash')}</button></div>
+      <label>Kalimat RHK (tampil di laporan)</label>
+      <textarea data-f="text" data-i="${i}">${esc(r.text)}</textarea>
+      <label style="margin-top:12px">Jenis kegiatan untuk RHK ini</label>
+      ${r.kegiatan.map((k,j)=>`<div class="sitem"><textarea data-f="keg" data-i="${i}" data-j="${j}">${esc(k)}</textarea><button class="ib dng" data-dk="${i}:${j}" title="Hapus kegiatan">${ic('trash')}</button></div>`).join('')}
+      <button class="btn ghost sm" data-ak="${i}">${ic('plus')}Tambah kegiatan</button>
+      <label style="margin-top:14px">Output yang dihasilkan untuk RHK ini</label>
+      ${(r.output||[]).map((k,j)=>`<div class="sitem"><textarea data-f="out" data-i="${i}" data-j="${j}">${esc(k)}</textarea><button class="ib dng" data-do="${i}:${j}" title="Hapus output">${ic('trash')}</button></div>`).join('')}
+      <button class="btn ghost sm" data-ao="${i}">${ic('plus')}Tambah output</button>
+    </div>`).join('');
+  L.querySelectorAll('[data-f]').forEach(el=>{
+    if(el.tagName==='TEXTAREA')grow(el);
+    el.oninput=()=>{
+      const r=S.settings.rhk[+el.dataset.i],f=el.dataset.f;
+      if(f==='label')r.label=el.value;else if(f==='text')r.text=el.value;else if(f==='out')r.output[+el.dataset.j]=el.value;else r.kegiatan[+el.dataset.j]=el.value;
+      if(el.tagName==='TEXTAREA')grow(el);
+    };
+  });
+  L.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{S.settings.rhk.splice(+b.dataset.d,1);renderRHKList();});
+  L.querySelectorAll('[data-dk]').forEach(b=>b.onclick=()=>{const[i,j]=b.dataset.dk.split(':').map(Number);S.settings.rhk[i].kegiatan.splice(j,1);renderRHKList();});
+  L.querySelectorAll('[data-ak]').forEach(b=>b.onclick=()=>{const r=S.settings.rhk[+b.dataset.ak];r.kegiatan.push('');renderRHKList();const t=L.querySelectorAll(`[data-f="keg"][data-i="${b.dataset.ak}"]`);if(t.length)t[t.length-1].focus();});
+  L.querySelectorAll('[data-do]').forEach(b=>b.onclick=()=>{const[i,j]=b.dataset.do.split(':').map(Number);S.settings.rhk[i].output.splice(j,1);renderRHKList();});
+  L.querySelectorAll('[data-ao]').forEach(b=>b.onclick=()=>{const r=S.settings.rhk[+b.dataset.ao];r.output=r.output||[];r.output.push('');renderRHKList();const t=L.querySelectorAll(`[data-f="out"][data-i="${b.dataset.ao}"]`);if(t.length)t[t.length-1].focus();});
+}
+function renderWaktuList(){
+  const L=$('#s-list-waktu');const list=S.settings.waktu;
+  L.innerHTML=list.length?list.map((t,i)=>`<div class="sitem"><textarea data-i="${i}">${esc(t)}</textarea><button class="ib dng" data-d="${i}" title="Hapus">${ic('trash')}</button></div>`).join(''):'<div class="empty">Belum ada kalimat waktu.</div>';
+  L.querySelectorAll('textarea').forEach(t=>{grow(t);t.oninput=()=>{S.settings.waktu[+t.dataset.i]=t.value;grow(t);};});
+  L.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{S.settings.waktu.splice(+b.dataset.d,1);renderWaktuList();});
+}
+$('#s-add-rhk').onclick=()=>{
+  const n=S.settings.rhk.length+1;
+  S.settings.rhk.push({label:'RHK '+n,text:'',kegiatan:[''],output:['']});
+  renderRHKList();
+  const t=$('#s-list-rhk').querySelectorAll('[data-f="text"]');
+  if(t.length)t[t.length-1].focus();
 };
-$('#s-save').onclick=async()=>{
-  const b=$('#s-save');b.disabled=true;
-  try{S.settings=await api('saveSettings',S.settings);fillSelects(false);renderSetting();toast('Setting tersimpan ✓');}
+$('#s-add-waktu').onclick=()=>{
+  S.settings.waktu.push('');renderWaktuList();
+  const t=$('#s-list-waktu').querySelectorAll('textarea');
+  if(t.length)t[t.length-1].focus();
+};
+$('#s-save-rhk').onclick=async()=>{
+  const b=$('#s-save-rhk');b.disabled=true;
+  try{S.settings=await api('saveSettings',S.settings);renderReports();renderRHKList();toast('RHK tersimpan ✓');}
   catch(e){toast('Gagal: '+e.message);}finally{b.disabled=false;}
+};
+$('#s-save-waktu').onclick=async()=>{
+  const b=$('#s-save-waktu');b.disabled=true;
+  try{S.settings=await api('saveSettings',S.settings);renderReports();renderWaktuList();toast('Waktu tersimpan ✓');}
+  catch(e){toast('Gagal: '+e.message);}finally{b.disabled=false;}
+};
+async function applyTemplate(key){
+  const tpl=TEMPLATES[key];if(!tpl)return;
+  const r=await askConfirm('Terapkan Template '+tpl.label+'?','Daftar RHK saat ini akan diganti dengan '+tpl.rhk.length+' RHK dari template "'+tpl.label+'". Data yang sudah ada akan hilang.','','Terapkan');
+  if(!r.ok)return;
+  S.settings.rhk=tpl.rhk.map(item=>({label:item.label,text:item.text,kegiatan:[...item.kegiatan],output:[...item.output]}));
+  S.settings=await api('saveSettings',S.settings);
+  renderRHKList();renderReports();
+  toast('✅ Template '+tpl.label+' diterapkan ('+tpl.rhk.length+' RHK)');
+}
+$('#tpl-asrama').onclick=()=>applyTemplate('wali_asrama');
+$('#tpl-asuh').onclick=()=>applyTemplate('wali_asuh');
+
+/* ================================================================
+   PROFIL
+   ================================================================ */
+const PF=['nama','nip','pangkat','jabatan','unit','atasan','tempat'];
+function fillProfil(){
+  PF.forEach(k=>$('#p-'+k).value=S.profil[k]||'');
+  $('#p-share').checked=S.profil.share!==false;
+  renderUploads();
+}
+function renderUploads(){
+  const lg=S.logo?S.logo.dataUrl:((!S.rmLogo&&S.profil.logoPreview)||'');
+  const tg=S.ttd?S.ttd.dataUrl:((!S.rmTtd&&S.profil.ttdPreview)||'');
+  $('#logo-prev').innerHTML=lg?`<img src="${lg}">`:ic('image');
+  $('#ttd-prev').innerHTML=tg?`<img src="${tg}">`:ic('image');
+}
+$('#logo-in').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.logo=await fileToData(f,500,'image/png');S.rmLogo=false;renderUploads();}catch(x){toast('Gagal membaca gambar');}e.target.value='';};
+$('#ttd-in').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.ttd=await fileToData(f,600,'image/png');S.rmTtd=false;renderUploads();}catch(x){toast('Gagal membaca gambar');}e.target.value='';};
+$('#logo-rm').onclick=()=>{S.logo=null;S.rmLogo=true;renderUploads();};
+$('#ttd-rm').onclick=()=>{S.ttd=null;S.rmTtd=true;renderUploads();};
+$('#p-save').onclick=async()=>{
+  const p={share:$('#p-share').checked,logo:S.logo?{b64:S.logo.b64,mime:S.logo.mime}:null,ttd:S.ttd?{b64:S.ttd.b64,mime:S.ttd.mime}:null,removeLogo:S.rmLogo,removeTtd:S.rmTtd};
+  PF.forEach(k=>p[k]=$('#p-'+k).value);
+  const b=$('#p-save');b.disabled=true;
+  try{
+    S.profil=await api('saveProfil',p);
+    S.logo=S.ttd=null;S.rmLogo=S.rmTtd=false;
+    renderWho();if(!$('#f-tempat').value)$('#f-tempat').value=S.profil.tempat||'';
+    renderUploads();loadBeranda();
+    toast('Profil tersimpan ✓');
+  }catch(e){toast('Gagal: '+e.message);}finally{b.disabled=false;}
+};
+$('#p-backup').onclick=async()=>{
+  try{
+    const data={version:1,exportedAt:new Date().toISOString(),profil:S.profil,settings:S.settings,riwayat:S.riwayat};
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download='skp_backup_'+todayStr()+'.json';a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+    toast('✅ Backup tersimpan');
+  }catch(e){toast('Gagal: '+e.message);}
+};
+$('#p-restore').onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{
+    const txt=await f.text();
+    const data=JSON.parse(txt);
+    const r=await askConfirm('Restore data?','Semua data saat ini akan diganti dengan file backup.','','Restore');
+    if(!r.ok)return;
+    if(data.profil) S.profil=await api('saveProfil',{...data.profil,logo:null,ttd:null,removeLogo:false,removeTtd:false});
+    if(data.settings) S.settings=await api('saveSettings',data.settings);
+    toast('Data dipulihkan ✓');
+    renderWho();fillProfil();renderSetting();renderReports();loadBeranda();
+  }catch(err){toast('Gagal restore: '+err.message);}
+  e.target.value='';
 };
 
 /* ================================================================
-   JADWAL — 2 panel: Absen (3 shift) & Masuk (M/P/L)
+   JADWAL
    ================================================================ */
-const SHIFT_ABSEN={
-  '1':{n:'Shift 1 · Pagi',j:'07.00–15.00',b:'Pagi'},
-  '2':{n:'Shift 2 · Sore',j:'15.00–23.00',b:'Sore'},
-  '3':{n:'Shift 3 · Malam',j:'23.00–07.00',b:'Malam'},
-  'P':{n:'Lepas Piket',j:'',b:'Lepas'},
-  'L':{n:'Libur',j:'',b:'Libur'}
-};
+const SHIFT_ABSEN={'1':{n:'Shift 1 · Pagi',j:'07.00–15.00',b:'Pagi'},'2':{n:'Shift 2 · Sore',j:'15.00–23.00',b:'Sore'},'3':{n:'Shift 3 · Malam',j:'23.00–07.00',b:'Malam'},'P':{n:'Lepas Piket',j:'',b:'Lepas'},'L':{n:'Libur',j:'',b:'Libur'}};
 const KEYS_ABSEN=['1','2','3','P','L'];
-/* Warna khusus: Lepas Piket & Libur keduanya merah */
-const SHIFT_MASUK={
-  'M':{n:'Masuk',b:'Masuk'},
-  'P':{n:'Lepas Piket',b:'Lepas'},
-  'L':{n:'Libur',b:'Libur'}
-};
+const SHIFT_MASUK={'M':{n:'Masuk',b:'Masuk'},'P':{n:'Lepas Piket',b:'Lepas'},'L':{n:'Libur',b:'Libur'}};
 const KEYS_MASUK=['M','P','L'];
-
 const sBadgeAbsen=k=>SHIFT_ABSEN[k]?`<span class="bd c${k}">${SHIFT_ABSEN[k].b}</span>`:'';
 const sBadgeMasuk=k=>SHIFT_MASUK[k]?`<span class="bd c${k}">${SHIFT_MASUK[k].b}</span>`:'';
-
-/* Panel switch */
 document.querySelectorAll('#jtabs button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#jtabs button').forEach(x=>x.classList.toggle('on',x===b));
-  document.querySelectorAll('.jpanel').forEach(p=>p.classList.toggle('on',p.id==='jp-'+b.dataset.j));
+  document.querySelectorAll('#tab-absen .jpanel').forEach(p=>p.classList.toggle('on',p.id==='jp-'+b.dataset.j));
 });
-
-/* ============ JADWAL ABSEN ============ */
 const AB={ym:'',data:{},loaded:{},sel:'',busy:false};
 function absInit(){
   if(AB.ym)return;
-  const t=todayStr();
-  AB.ym=t.slice(0,7);AB.sel=t;
+  const t=todayStr();AB.ym=t.slice(0,7);AB.sel=t;
   $('#ab-from').value=t;$('#ab-to').value=t;
   $('#ab-rs').innerHTML=KEYS_ABSEN.map(k=>`<option value="${k}">${SHIFT_ABSEN[k].n} (${SHIFT_ABSEN[k].j})</option>`).join('');
 }
@@ -888,7 +1231,7 @@ function renderAbsen(){
   const cnt={};keys.forEach(k=>{const s=AB.data[k].shift;cnt[s]=(cnt[s]||0)+1;});
   $('#ab-sub').textContent=keys.length?keys.length+' hari terisi':'Belum ada jadwal';
   $('#ab-recap').innerHTML=KEYS_ABSEN.filter(k=>cnt[k]).map(k=>`<span class="lg c${k}">${SHIFT_ABSEN[k].n}: ${cnt[k]}</span>`).join('')||'<span style="color:var(--mute);font-size:13px">Belum ada jadwal bulan ini.</span>';
-    $('#ab-list').innerHTML=keys.map(t=>{
+  $('#ab-list').innerHTML=keys.map(t=>{
     const e=AB.data[t],dd=new Date(+t.slice(0,4),+t.slice(5,7)-1,+t.slice(8,10)),s=SHIFT_ABSEN[e.shift];
     return `<button class="arow${t===AB.sel?' sel':''}" data-t="${t}"><span class="ad">${HARI3[dd.getDay()]}, ${+t.slice(8)}</span>${sBadgeAbsen(e.shift)}<span class="am">${s.n}${s.j?' · '+s.j:''}</span></button>`;
   }).join('');
@@ -940,17 +1283,13 @@ $('#ab-rgo').onclick=()=>{
   if(f>t)return toast('Tanggal "dari" harus sebelum "sampai"');
   const d=new Date(f+'T00:00:00'),end=new Date(t+'T00:00:00');
   if(Math.round((end-d)/864e5)+1>62)return toast('Maksimal 62 hari sekali isi');
-  const items=[];
-  while(d<=end){items.push({tanggal:ymdOf(d),shift:k});d.setDate(d.getDate()+1);}
+  const items=[];while(d<=end){items.push({tanggal:ymdOf(d),shift:k});d.setDate(d.getDate()+1);}
   saveAbsenItems(items,'absen',items.length+' hari terisi ✓',$('#ab-rgo'));
 };
-
-/* ============ JADWAL MASUK ============ */
 const MK={ym:'',data:{},loaded:{},sel:'',busy:false};
 function masukInit(){
   if(MK.ym)return;
-  const t=todayStr();
-  MK.ym=t.slice(0,7);MK.sel=t;
+  const t=todayStr();MK.ym=t.slice(0,7);MK.sel=t;
   $('#mk-from').value=t;$('#mk-to').value=t;
   $('#mk-rs').innerHTML=KEYS_MASUK.map(k=>`<option value="${k}">${SHIFT_MASUK[k].n}</option>`).join('');
 }
@@ -1022,52 +1361,32 @@ $('#mk-rgo').onclick=()=>{
   if(f>t)return toast('Tanggal "dari" harus sebelum "sampai"');
   const d=new Date(f+'T00:00:00'),end=new Date(t+'T00:00:00');
   if(Math.round((end-d)/864e5)+1>62)return toast('Maksimal 62 hari sekali isi');
-  const items=[];
-  while(d<=end){items.push({tanggal:ymdOf(d),shift:k});d.setDate(d.getDate()+1);}
+  const items=[];while(d<=end){items.push({tanggal:ymdOf(d),shift:k});d.setDate(d.getDate()+1);}
   saveAbsenItems(items,'masuk',items.length+' hari terisi ✓',$('#mk-rgo'));
 };
 
-/* ---------- PROFIL ---------- */
-const PF=['nama','nip','pangkat','jabatan','unit','atasan','tempat'];
-function fillProfil(){
-  PF.forEach(k=>$('#p-'+k).value=S.profil[k]||'');
-  $('#p-share').checked=S.profil.share!==false;
-  renderUploads();
-}
-function renderUploads(){
-  const lg=S.logo?S.logo.dataUrl:(!S.rmLogo&&S.profil.logoPreview)||'';
-  const tg=S.ttd?S.ttd.dataUrl:(!S.rmTtd&&S.profil.ttdPreview)||'';
-  $('#logo-prev').innerHTML=lg?`<img src="${lg}">`:ic('image');
-  $('#ttd-prev').innerHTML=tg?`<img src="${tg}">`:ic('image');
-}
-$('#logo-in').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.logo=await fileToData(f,500,'image/png');S.rmLogo=false;renderUploads();}catch(x){toast('Gagal membaca gambar');}e.target.value='';};
-$('#ttd-in').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{S.ttd=await fileToData(f,600,'image/png');S.rmTtd=false;renderUploads();}catch(x){toast('Gagal membaca gambar');}e.target.value='';};
-$('#logo-rm').onclick=()=>{S.logo=null;S.rmLogo=true;renderUploads();};
-$('#ttd-rm').onclick=()=>{S.ttd=null;S.rmTtd=true;renderUploads();};
-$('#p-save').onclick=async()=>{
-  const p={share:$('#p-share').checked,logo:S.logo?{b64:S.logo.b64,mime:S.logo.mime}:null,ttd:S.ttd?{b64:S.ttd.b64,mime:S.ttd.mime}:null,removeLogo:S.rmLogo,removeTtd:S.rmTtd};
-  PF.forEach(k=>p[k]=$('#p-'+k).value);
-  const b=$('#p-save');b.disabled=true;
-  try{S.profil=await api('saveProfil',p);S.logo=S.ttd=null;S.rmLogo=S.rmTtd=false;renderWho();if(!$('#f-tempat').value)$('#f-tempat').value=S.profil.tempat||'';renderUploads();toast('Profil tersimpan ✓');}
-  catch(e){toast('Gagal: '+e.message);}finally{b.disabled=false;}
-};
-
-/* ---------- init ---------- */
+/* ================================================================
+   INIT
+   ================================================================ */
 (async function init(){
   hydrate();
   try{
     const raw=await api('getInit');
-    if(raw==null)throw new Error('Server tidak mengembalikan data. Pastikan deployment sudah "Versi baru" dengan Jalankan sebagai: Saya.');
+    if(raw==null)throw new Error('Server tidak mengembalikan data.');
     const r=typeof raw==='string'?JSON.parse(raw):raw;
     if(r.error)throw new Error(r.error);
-    S.profil=r.profil;S.settings=r.settings;S.riwayat=r.riwayat;
+    S.profil=r.profil||S.profil;
+    S.settings=r.settings||S.settings;
+    S.riwayat=r.riwayat||[];
+    if(!Array.isArray(S.settings.rhk))S.settings.rhk=[];
+    if(!Array.isArray(S.settings.waktu))S.settings.waktu=[];
   }catch(e){
     $('#boot-t').innerHTML='Gagal memuat: '+esc(e.message)+'<br><br><button class="btn pri sm" onclick="location.reload()">Coba lagi</button>';
     document.querySelector('#boot .spin').style.display='none';return;
   }
   const t=todayStr();
   $('#f-tanggal').value=t;$('#f-tempat').value=S.profil.tempat||'';
-  renderWho();buildFields();renderThumbs();hydrate();
+  renderWho();renderReports();renderSetting();loadBeranda();
   $('#boot').style.display='none';
   try{window.top.postMessage({skp:'ready'},'*');}catch(e){}
 })();
